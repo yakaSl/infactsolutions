@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 
 const projects = [
   {
@@ -65,33 +66,47 @@ export function ProjectsSection() {
   return (
     <section id="works" className="bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center space-y-4 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="text-center space-y-4 mb-12"
+        >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Our Works</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             A glimpse into the solutions we've crafted for our valued clients.
           </p>
-        </div>
+        </motion.div>
 
         <Dialog>
           <div className="sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
-            {projects.map((project) => (
-              <DialogTrigger key={project.id} asChild onClick={() => setSelectedProject(project)}>
-                <div className="group relative overflow-hidden rounded-lg cursor-pointer break-inside-avoid shadow-lg">
-                  <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    width={500}
-                    height={700}
-                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                    data-ai-hint={project.dataAiHint}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
-                  <div className="absolute bottom-0 left-0 p-6 text-white transition-transform duration-500 translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                    <h3 className="font-bold text-xl">{project.title}</h3>
-                    <p className="text-sm text-primary">{project.category}</p>
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
+              >
+                <DialogTrigger asChild onClick={() => setSelectedProject(project)}>
+                  <div className="group relative overflow-hidden rounded-lg cursor-pointer break-inside-avoid shadow-lg">
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.title}
+                      width={500}
+                      height={700}
+                      className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                      data-ai-hint={project.dataAiHint}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
+                    <div className="absolute bottom-0 left-0 p-6 text-white transition-transform duration-500 translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                      <h3 className="font-bold text-xl">{project.title}</h3>
+                      <p className="text-sm text-primary">{project.category}</p>
+                    </div>
                   </div>
-                </div>
-              </DialogTrigger>
+                </DialogTrigger>
+              </motion.div>
             ))}
           </div>
 

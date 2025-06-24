@@ -27,7 +27,7 @@ const testimonials = [
   {
     name: 'Emily Rodriguez',
     company: 'Marketing Director, Connectify',
-    quote: 'From data analytics to a full rebrand, INFACT has been our go-to partner. They don\'t just deliver services; they deliver results that have a real impact on the bottom line.',
+    quote: "From data analytics to a full rebrand, INFACT has been our go-to partner. They don't just deliver services; they deliver results that have a real impact on the bottom line.",
     avatar: 'https://placehold.co/100x100.png',
     dataAiHint: 'woman smiling',
     initials: 'ER',
@@ -54,7 +54,13 @@ export function TestimonialsSection() {
 
   return (
     <section id="testimonials" className="bg-card">
-      <div className="container mx-auto px-4 md:px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="container mx-auto px-4 md:px-6"
+      >
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Trusted by Industry Leaders</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -93,7 +99,7 @@ export function TestimonialsSection() {
             </AnimatePresence>
           </CardContent>
         </Card>
-      </div>
+      </motion.div>
     </section>
   );
 }
