@@ -1,68 +1,23 @@
 "use client";
 
-import { useState } from 'react';
 import Image from 'next/image';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { projects } from '@/lib/projects-data';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { Badge } from '@/components/ui/badge';
 
-const projects = [
-  {
-    id: 1,
-    title: 'Project Alpha',
-    category: 'Web Application',
-    imageUrl: 'https://placehold.co/500x700.png',
-    dataAiHint: 'dashboard analytics',
-    description: 'A comprehensive enterprise resource planning (ERP) system designed for a major logistics company. This web application streamlined their operations, from inventory management to delivery tracking, resulting in a 30% increase in efficiency.'
-  },
-  {
-    id: 2,
-    title: 'E-commerce Platform',
-    category: 'Mobile App',
-    imageUrl: 'https://placehold.co/500x500.png',
-    dataAiHint: 'shopping app',
-    description: 'A sleek and user-friendly mobile e-commerce app for a fashion startup. Featuring AR try-on technology and personalized recommendations, it boosted user engagement and sales by 50% within the first six months.'
-  },
-  {
-    id: 3,
-    title: 'Data Vis Dashboard',
-    category: 'Data Analytics',
-    imageUrl: 'https://placehold.co/500x800.png',
-    dataAiHint: 'data visualization',
-    description: 'An interactive data visualization dashboard for a financial services firm, enabling real-time monitoring of market trends and portfolio performance. The intuitive interface made complex data accessible to non-technical stakeholders.'
-  },
-  {
-    id: 4,
-    title: 'Project Beta',
-    category: 'Cloud Migration',
-    imageUrl: 'https://placehold.co/500x600.png',
-    dataAiHint: 'cloud infrastructure',
-    description: 'Led the complete cloud migration for a healthcare provider to a secure and scalable AWS infrastructure. This project ensured HIPAA compliance, improved data accessibility for practitioners, and reduced operational costs.'
-  },
-  {
-    id: 5,
-    title: 'AI Chatbot',
-    category: 'Artificial Intelligence',
-    imageUrl: 'https://placehold.co/500x500.png',
-    dataAiHint: 'chatbot interface',
-    description: 'Developed an AI-powered customer service chatbot for a telecommunications company. It handles over 60% of customer inquiries, reducing wait times and freeing up human agents to focus on more complex issues.'
-  },
-  {
-    id: 6,
-    title: 'Brand Redesign',
-    category: 'UI/UX Design',
-    imageUrl: 'https://placehold.co/500x700.png',
-    dataAiHint: 'brand identity',
-    description: 'A complete brand identity and website redesign for a SaaS company. The new design system improved user experience, increased conversion rates, and created a modern, cohesive brand image across all platforms.'
-  },
-];
-
-type Project = (typeof projects)[0];
+const formatCurrency = (amount: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(amount);
+};
 
 export function ProjectsSection() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
   return (
     <section id="projects" className="bg-background">
       <div className="container mx-auto px-4 md:px-6">
@@ -79,65 +34,51 @@ export function ProjectsSection() {
           </p>
         </motion.div>
 
-        <Dialog>
-          <div className="sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
-              >
-                <DialogTrigger asChild onClick={() => setSelectedProject(project)}>
-                  <div className="group relative overflow-hidden rounded-lg cursor-pointer break-inside-avoid shadow-lg">
-                    <Image
-                      src={project.imageUrl}
-                      alt={project.title}
-                      width={500}
-                      height={700}
-                      className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                      data-ai-hint={project.dataAiHint}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
-                    <div className="absolute bottom-0 left-0 p-6 text-white transition-transform duration-500 translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                      <h3 className="font-bold text-xl">{project.title}</h3>
-                      <p className="text-sm text-primary">{project.category}</p>
-                    </div>
-                  </div>
-                </DialogTrigger>
-              </motion.div>
-            ))}
-          </div>
-
-          {selectedProject && (
-            <DialogContent className="max-w-4xl bg-card border-border">
-              <DialogHeader>
-                <div className="grid md:grid-cols-2 gap-8 items-start">
-                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-                    <Image
-                      src={selectedProject.imageUrl.replace(/500x\d+/, '800x600')}
-                      alt={selectedProject.title}
-                      layout="fill"
-                      objectFit="cover"
-                      data-ai-hint={selectedProject.dataAiHint}
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <DialogTitle className="text-3xl font-bold text-primary">{selectedProject.title}</DialogTitle>
-                    <DialogDescription className="text-base text-muted-foreground">
-                      {selectedProject.description}
-                    </DialogDescription>
-                    <Button>
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Visit Project
-                    </Button>
-                  </div>
-                </div>
-              </DialogHeader>
-            </DialogContent>
-          )}
-        </Dialog>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
+            >
+              <Link href={`/projects/${project.id}`} legacyBehavior>
+                <a className="block h-full">
+                  <Card className="h-full flex flex-col group overflow-hidden cursor-pointer shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-2 border-border/50 hover:border-primary">
+                    <CardHeader className="p-0">
+                      <div className="relative aspect-video">
+                        <Image
+                          src={project.imageUrl}
+                          alt={project.title}
+                          layout="fill"
+                          objectFit="cover"
+                          className="group-hover:scale-105 transition-transform duration-500"
+                          data-ai-hint={project.dataAiHint}
+                        />
+                      </div>
+                    </CardHeader>
+                    <CardContent className="p-4 flex flex-col flex-grow">
+                      <Badge variant="secondary" className="self-start mb-2">{project.category}</Badge>
+                      <CardTitle className="text-lg font-semibold mb-2 flex-grow">{project.title}</CardTitle>
+                      <div className="space-y-3 mt-auto">
+                        <Progress value={(project.currentInvestment / project.expectedInvestment) * 100} className="h-2" />
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="font-semibold text-primary">
+                            {formatCurrency(project.currentInvestment)}
+                          </span>
+                          <span className="text-muted-foreground">
+                            raised of {formatCurrency(project.expectedInvestment)}
+                          </span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </a>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
