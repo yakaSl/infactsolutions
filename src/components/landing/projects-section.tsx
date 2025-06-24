@@ -51,9 +51,8 @@ export function ProjectsSection() {
                         <Image
                           src={project.imageUrl}
                           alt={project.title}
-                          layout="fill"
-                          objectFit="cover"
-                          className="group-hover:scale-105 transition-transform duration-500"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
                           data-ai-hint={project.dataAiHint}
                         />
                       </div>

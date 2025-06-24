@@ -120,8 +120,8 @@ export function ContactSection() {
               <Image 
                 src="https://placehold.co/600x800.png"
                 alt="Contact us"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
                 data-ai-hint="contact communication"
               />
                <div className="absolute inset-0 bg-black/30" />

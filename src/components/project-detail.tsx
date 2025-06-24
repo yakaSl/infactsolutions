@@ -53,7 +53,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                   {project.screenshots.map((src, index) => (
                     <CarouselItem key={index}>
                       <div className="aspect-video relative rounded-lg overflow-hidden bg-muted">
-                        <Image src={src} alt={`${project.title} screenshot ${index + 1}`} layout="fill" objectFit="cover" data-ai-hint="screenshot app"/>
+                        <Image src={src} alt={`${project.title} screenshot ${index + 1}`} fill className="object-cover" data-ai-hint="screenshot app"/>
                       </div>
                     </CarouselItem>
                   ))}

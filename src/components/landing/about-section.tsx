@@ -36,8 +36,8 @@ export function AboutSection() {
               <Image 
                 src="https://placehold.co/600x400.png"
                 alt="Our team collaborating"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
                 data-ai-hint="team collaboration"
               />
             </motion.div>
