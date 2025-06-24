@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
@@ -9,7 +10,7 @@ import { Menu } from 'lucide-react';
 const navLinks = [
   { id: 'about', label: 'About Us' },
   { id: 'services', label: 'Services' },
-  { id: 'works', label: 'Our Works' },
+  { href: '/projects', label: 'Our Works' },
   { id: 'testimonials', label: 'Testimonials' },
 ];
 
@@ -36,9 +37,15 @@ export function Header() {
   const NavLinksContent = () => (
     <>
       {navLinks.map((link) => (
-        <Button key={link.id} variant="link" onClick={() => scrollToSection(link.id)} className="text-foreground hover:text-primary transition-colors text-base">
-          {link.label}
-        </Button>
+        link.href ? (
+          <Button key={link.label} variant="link" asChild className="text-foreground hover:text-primary transition-colors text-base">
+            <Link href={link.href}>{link.label}</Link>
+          </Button>
+        ) : (
+          <Button key={link.id!} variant="link" onClick={() => scrollToSection(link.id!)} className="text-foreground hover:text-primary transition-colors text-base">
+            {link.label}
+          </Button>
+        )
       ))}
       <Button onClick={() => scrollToSection('contact')} className="ml-2">Get in Touch</Button>
     </>
@@ -64,9 +71,15 @@ export function Header() {
               <div className="flex flex-col items-center justify-center h-full">
                 <div className="flex flex-col items-center gap-6">
                   {navLinks.map((link) => (
-                    <Button key={link.id} variant="link" onClick={() => scrollToSection(link.id)} className="text-foreground text-xl">
-                      {link.label}
-                    </Button>
+                    link.href ? (
+                      <Button key={link.label} variant="link" asChild className="text-foreground text-xl">
+                        <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)}>{link.label}</Link>
+                      </Button>
+                    ) : (
+                      <Button key={link.id!} variant="link" onClick={() => scrollToSection(link.id!)} className="text-foreground text-xl">
+                        {link.label}
+                      </Button>
+                    )
                   ))}
                   <Button onClick={() => scrollToSection('contact')} className="mt-4">Get in Touch</Button>
                 </div>
