@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} dark`}>
+    <html lang="en" className={`${inter.variable} dark scroll-smooth`}>
       <body className="font-body antialiased selection:bg-primary/70 selection:text-primary-foreground">
         {children}
         <Toaster />
