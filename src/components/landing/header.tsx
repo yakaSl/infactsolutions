@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Mountain } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 const navLinks = [
   { id: 'about', label: 'About Us' },
@@ -47,8 +48,7 @@ export function Header() {
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm border-b' : 'bg-transparent'}`}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection('hero')}>
-          <Mountain className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold tracking-tight">INFACT</span>
+          <Image src="https://placehold.co/400x60.png" alt="INFACT SOLUTIONS Logo" width={400} height={60} data-ai-hint="logo" />
         </div>
         <nav className="hidden md:flex items-center gap-2">
           <NavLinksContent />
