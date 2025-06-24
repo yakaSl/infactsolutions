@@ -64,7 +64,7 @@ export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="works" className="bg-background">
+    <section id="projects" className="bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -73,7 +73,7 @@ export function ProjectsSection() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center space-y-4 mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Our Works</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Projects</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             A glimpse into the solutions we've crafted for our valued clients.
           </p>
