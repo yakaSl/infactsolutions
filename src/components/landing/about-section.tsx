@@ -34,7 +34,7 @@ export function AboutSection() {
               className="relative h-96 w-full rounded-lg overflow-hidden shadow-2xl"
             >
               <Image 
-                src="https://placehold.co/600x400.png"
+                src="/aboutinfact.jpg"
                 alt="Our team collaborating"
                 fill
                 className="object-cover"
