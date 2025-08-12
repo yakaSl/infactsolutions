@@ -118,7 +118,7 @@ export function ContactSection() {
               className="relative h-[550px] w-full rounded-lg overflow-hidden hidden lg:block shadow-xl"
             >
               <Image 
-                src="https://placehold.co/600x800.png"
+                src="/contactus.jpg"
                 alt="Contact us"
                 fill
                 className="object-cover"
