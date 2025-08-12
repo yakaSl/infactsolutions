@@ -59,52 +59,57 @@ export function ContactSection() {
             Have a project in mind or just want to say hello? We'd love to hear from you.
           </p>
         </motion.div>
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="h-full"
             >
-              <Card className="w-full bg-card border-border/50 shadow-xl">
+              <Card className="w-full h-full bg-card border-border/50 shadow-xl flex flex-col">
                 <CardHeader>
                   <CardTitle>Send us a Message</CardTitle>
                   <CardDescription>Fill out the form and our team will get back to you within 24 hours.</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex flex-col flex-grow">
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                      <FormField control={form.control} name="name" render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Full Name</FormLabel>
-                          <FormControl><Input placeholder="John Doe" {...field} /></FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <FormField control={form.control} name="email" render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email Address</FormLabel>
-                          <FormControl><Input type="email" placeholder="email@example.com" {...field} /></FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <FormField control={form.control} name="subject" render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Subject</FormLabel>
-                          <FormControl><Input placeholder="Regarding a new project..." {...field} /></FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <FormField control={form.control} name="message" render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Your Message</FormLabel>
-                          <FormControl><Textarea placeholder="Tell us about your project or inquiry..." rows={5} {...field} /></FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                        {form.formState.isSubmitting ? 'Sending...' : 'Send Message'}
-                      </Button>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex flex-col flex-grow">
+                      <div className="space-y-4">
+                        <FormField control={form.control} name="name" render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Full Name</FormLabel>
+                            <FormControl><Input placeholder="John Doe" {...field} /></FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )} />
+                        <FormField control={form.control} name="email" render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email Address</FormLabel>
+                            <FormControl><Input type="email" placeholder="email@example.com" {...field} /></FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )} />
+                        <FormField control={form.control} name="subject" render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Subject</FormLabel>
+                            <FormControl><Input placeholder="Regarding a new project..." {...field} /></FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )} />
+                        <FormField control={form.control} name="message" render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Your Message</FormLabel>
+                            <FormControl><Textarea placeholder="Tell us about your project or inquiry..." rows={5} {...field} /></FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )} />
+                      </div>
+                      <div className="mt-auto">
+                        <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+                          {form.formState.isSubmitting ? 'Sending...' : 'Send Message'}
+                        </Button>
+                      </div>
                     </form>
                   </Form>
                 </CardContent>
@@ -115,14 +120,13 @@ export function ContactSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-              className="relative h-[550px] w-full rounded-lg overflow-hidden hidden lg:block shadow-xl"
+              className="relative min-h-[550px] w-full rounded-lg overflow-hidden hidden lg:block shadow-xl"
             >
               <Image 
                 src="/contactus.jpg"
                 alt="Contact us"
                 fill
                 className="object-cover"
-                data-ai-hint="contact communication"
               />
                <div className="absolute inset-0 bg-black/30" />
             </motion.div>
