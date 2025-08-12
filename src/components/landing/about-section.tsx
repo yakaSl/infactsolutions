@@ -50,7 +50,7 @@ export function AboutSection() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 1 }}
         className="h-[400px] w-full parallax" 
-        style={{ backgroundImage: "url('https://placehold.co/1920x600.png')" }} data-ai-hint="modern office"
+        style={{ backgroundImage: "url('/parallaxbk.jpg')" }}
       ></motion.div>
     </>
   );
