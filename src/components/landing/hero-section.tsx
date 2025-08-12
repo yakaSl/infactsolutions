@@ -11,7 +11,7 @@ export function HeroSection() {
     };
     
     return (
-        <section id="hero" className="relative h-screen w-full parallax" style={{ backgroundImage: "url('https://placehold.co/1920x1080.png')" }} data-ai-hint="abstract technology">
+        <section id="hero" className="relative h-screen w-full parallax" style={{ backgroundImage: "url('/home.jpg')" }} data-ai-hint="abstract technology">
             <div className="absolute inset-0 bg-black/60" />
             <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4">
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter animate-fade-in-down">
