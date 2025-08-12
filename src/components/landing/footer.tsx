@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Mountain, Twitter, Linkedin, Github } from 'lucide-react';
+import Link from 'next/link';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,10 +9,10 @@ export function Footer() {
     <footer className="bg-card border-t">
       <div className="container mx-auto px-4 md:px-6 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <Mountain className="h-6 w-6 text-primary" />
-            <span className="text-lg font-semibold">INFACT SOLUTIONS</span>
-          </div>
+          <Link href="/" className="flex items-center gap-2">
+            <Mountain className="h-8 w-8 text-primary" />
+            <span className="text-xl font-bold tracking-tight">INFACT</span>
+          </Link>
           <p className="text-sm text-muted-foreground">
             &copy; {currentYear} INFACT SOLUTIONS. All Rights Reserved.
           </p>

@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { Menu, Mountain } from 'lucide-react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -31,7 +30,8 @@ export function Header() {
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm border-b' : 'bg-transparent'}`}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="https://placehold.co/400x60.png" alt="INFACT SOLUTIONS Logo" width={400} height={60} data-ai-hint="logo" />
+          <Mountain className="h-8 w-8 text-primary" />
+          <span className="text-xl font-bold tracking-tight">INFACT</span>
         </Link>
         <nav className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => (
