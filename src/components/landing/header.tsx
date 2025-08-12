@@ -31,7 +31,7 @@ export function Header() {
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm border-b' : 'bg-transparent'}`}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="INFACT Solutions Logo" width={180} height={48} />
+          <Image src="/logo.png" alt="INFACT Solutions Logo" width={210} height={56} />
         </Link>
         <nav className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => (

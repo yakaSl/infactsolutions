@@ -11,7 +11,7 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-6 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.png" alt="INFACT Solutions Logo" width={150} height={40} />
+            <Image src="/logo.png" alt="INFACT Solutions Logo" width={180} height={48} />
           </Link>
           <p className="text-sm text-muted-foreground">
             &copy; {currentYear} INFACT SOLUTIONS. All Rights Reserved.
