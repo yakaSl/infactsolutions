@@ -47,7 +47,7 @@ export function PastWorksSection() {
                 <CardContent className="p-4 flex flex-col flex-grow">
                   <Badge variant="secondary" className="self-start mb-2">{work.category}</Badge>
                   <CardTitle className="text-lg font-semibold mb-2">{work.title}</CardTitle>
-                  <p className="text-muted-foreground text-sm mb-4 flex-grow">{work.description}</p>
+                  <p className="text-muted-foreground text-sm mb-4 flex-grow text-justify">{work.description}</p>
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {work.tags.map(tag => (
                       <Badge key={tag} variant="outline">{tag}</Badge>
