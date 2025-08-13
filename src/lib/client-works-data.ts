@@ -12,11 +12,11 @@ export const clientWorks: ClientWork[] = [
     {
       id: 1,
       title: 'Ekwayamu Official Website',
-      category: 'Corporate Website',
-      description: 'A professional corporate website for a software development company offering custom software, mobile, and web development services.',
-      imageUrl: 'https://placehold.co/500x350.png',
-      dataAiHint: 'company website',
-      tags: ['Web Development', 'UI/UX Design', 'Mobile Development'],
+      category: 'Non-Profit Organization',
+      description: 'Ekwayamu is a non-profit organization registered in Switzerland (NPO number CHE-422.823.093). Our team supports people on a voluntary basis, regardless of religious or ethnic boundaries.',
+      imageUrl: '/pastwork/ekwayamu.png',
+      dataAiHint: 'non-profit website',
+      tags: ['Web Development', 'UI/UX Design', 'Community Support'],
     },
     {
       id: 2,
