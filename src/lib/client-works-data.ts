@@ -14,7 +14,7 @@ export const clientWorks: ClientWork[] = [
       title: 'Ekwayamu Official Website',
       category: 'Non-Profit Organization',
       description: 'Ekwayamu is a non-profit organization registered in Switzerland (NPO number CHE-422.823.093). Our team supports people on a voluntary basis, regardless of religious or ethnic boundaries.',
-      imageUrl: '/pastwork/ekwayamu.png',
+      imageUrl: '/pastwork/ekwayamu.jpg',
       dataAiHint: 'non-profit website',
       tags: ['Web Development', 'UI/UX Design', 'Community Support'],
     },
