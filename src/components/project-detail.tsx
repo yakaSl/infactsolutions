@@ -7,7 +7,7 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Download, Rocket, CheckCircle, Circle } from 'lucide-react';
+import { Download, Rocket, CheckCircle, Circle, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const formatCurrency = (amount: number) => {
@@ -123,17 +123,26 @@ export function ProjectDetail({ project }: { project: Project }) {
                   {investmentProgress.toFixed(0)}% Funded
                 </div>
               </div>
-
-              <Button size="lg" className="w-full" asChild>
-                <a href={project.pitchDeckUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                    <Download className="w-5 h-5" />
-                    <span>View Pitch Deck</span>
-                </a>
-              </Button>
-              <Button size="lg" variant="secondary" className="w-full">
-                <Rocket className="w-5 h-5" />
-                <span>Express Interest</span>
-              </Button>
+              <div className="space-y-2">
+                {project.websiteUrl && (
+                    <Button size="lg" variant="outline" className="w-full" asChild>
+                        <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                            <ExternalLink className="w-5 h-5" />
+                            <span>Visit Website</span>
+                        </a>
+                    </Button>
+                )}
+                <Button size="lg" className="w-full" asChild>
+                  <a href={project.pitchDeckUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                      <Download className="w-5 h-5" />
+                      <span>View Pitch Deck</span>
+                  </a>
+                </Button>
+                <Button size="lg" variant="secondary" className="w-full">
+                  <Rocket className="w-5 h-5" />
+                  <span>Express Interest</span>
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </motion.div>
