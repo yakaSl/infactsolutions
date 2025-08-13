@@ -11,12 +11,12 @@ export interface ClientWork {
 export const clientWorks: ClientWork[] = [
     {
       id: 1,
-      title: 'QuantumLeap CRM',
-      category: 'Enterprise Software',
-      description: 'A cutting-edge CRM platform built for a leading sales organization, improving lead management and boosting team productivity by 40%.',
+      title: 'Ekwayamu Official Website',
+      category: 'Corporate Website',
+      description: 'A professional corporate website for a software development company offering custom software, mobile, and web development services.',
       imageUrl: 'https://placehold.co/500x350.png',
-      dataAiHint: 'CRM dashboard',
-      tags: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
+      dataAiHint: 'company website',
+      tags: ['Web Development', 'UI/UX Design', 'Mobile Development'],
     },
     {
       id: 2,
