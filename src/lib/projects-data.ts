@@ -1,3 +1,4 @@
+
 export interface InvestmentSlot {
   status: 'available' | 'booked';
 }
@@ -21,7 +22,7 @@ export const projects: Project[] = [
       id: 1,
       title: 'LearnLabz - Tutor Saas',
       category: 'Web Application',
-      imageUrl: 'https://placehold.co/500x350.png',
+      imageUrl: '/project/learnlabz.jpg',
       dataAiHint: 'dashboard analytics',
       description: 'A comprehensive enterprise resource planning (ERP) system for logistics. Streamlines operations from inventory to delivery, boosting efficiency by 30%.',
       expectedInvestment: 5000000,
