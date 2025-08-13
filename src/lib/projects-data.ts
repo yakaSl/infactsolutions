@@ -19,13 +19,13 @@ export interface Project {
 export const projects: Project[] = [
     {
       id: 1,
-      title: 'Project Alpha - ERP System',
+      title: 'LearnLabz - Tutor Saas',
       category: 'Web Application',
       imageUrl: 'https://placehold.co/500x350.png',
       dataAiHint: 'dashboard analytics',
       description: 'A comprehensive enterprise resource planning (ERP) system for logistics. Streamlines operations from inventory to delivery, boosting efficiency by 30%.',
-      expectedInvestment: 500000,
-      currentInvestment: 350000,
+      expectedInvestment: 5000000,
+      currentInvestment: 0,
       pitchDeckUrl: '/pitch-deck-alpha.pdf',
       screenshots: [
         'https://placehold.co/1200x800.png',
@@ -33,8 +33,8 @@ export const projects: Project[] = [
         'https://placehold.co/1200x800.png',
       ],
       investmentSlots: [
-        { status: 'booked' }, { status: 'booked' }, { status: 'booked' }, { status: 'booked' },
-        { status: 'booked' }, { status: 'booked' }, { status: 'booked' }, { status: 'available' },
+        { status: 'available' }, { status: 'available' }, { status: 'available' }, { status: 'available' },
+        { status: 'available' }, { status: 'available' }, { status: 'available' }, { status: 'available' },
         { status: 'available' }, { status: 'available' }
       ]
     },
