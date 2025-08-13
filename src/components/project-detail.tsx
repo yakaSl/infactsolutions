@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Download, Rocket, CheckCircle, Circle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -68,6 +68,10 @@ export function ProjectDetail({ project }: { project: Project }) {
           <Card className="border-border/50 shadow-lg">
             <CardHeader>
               <CardTitle>Investment Slots</CardTitle>
+              <CardDescription>
+                {project.investmentSlots.length} slots available. 
+                Each slot represents an investment of {formatCurrency(project.expectedInvestment / project.investmentSlots.length)}.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-3">

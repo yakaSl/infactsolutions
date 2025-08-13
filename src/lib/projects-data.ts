@@ -24,7 +24,7 @@ export const projects: Project[] = [
       category: 'Web Application + Mobile Application',
       imageUrl: '/projects/learnlabz.jpg',
       dataAiHint: 'dashboard analytics',
-      description: 'A comprehensive enterprise resource planning (ERP) system for logistics. Streamlines operations from inventory to delivery, boosting efficiency by 30%.',
+      description: 'A comprehensive SaaS platform for tutors and educational institutions. Each of the 50 investment slots is valued at 100,000 LKR.',
       expectedInvestment: 5000000,
       currentInvestment: 0,
       pitchDeckUrl: '/pitch-deck-alpha.pdf',
@@ -33,11 +33,7 @@ export const projects: Project[] = [
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
       ],
-      investmentSlots: [
-        { status: 'available' }, { status: 'available' }, { status: 'available' }, { status: 'available' },
-        { status: 'available' }, { status: 'available' }, { status: 'available' }, { status: 'available' },
-        { status: 'available' }, { status: 'available' }
-      ]
+      investmentSlots: Array(50).fill({ status: 'available' }),
     },
     {
       id: 2,
