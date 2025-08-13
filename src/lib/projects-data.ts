@@ -28,10 +28,10 @@ export const projects: Project[] = [
       description: 'A comprehensive SaaS platform for tutors and educational institutions. Each of the 50 investment slots is valued at 100,000 LKR.',
       expectedInvestment: 5000000,
       currentInvestment: 0,
-      pitchDeckUrl: '/learnlabz-pitch-deck.pdf',
+      pitchDeckUrl: '/projects/learnlabz/Proposal.pdf',
       websiteUrl: 'https://learnlabz.com',
       screenshots: [
-        'https://placehold.co/1200x800.png',
+        '/projects/learnlabz/dashboard.jpeg',
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
       ],
