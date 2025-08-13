@@ -21,7 +21,7 @@ export const projects: Project[] = [
     {
       id: 1,
       title: 'LearnLabz - Tutor Saas',
-      category: 'Web Application',
+      category: 'Web Application + Mobile Application',
       imageUrl: '/projects/learnlabz.jpg',
       dataAiHint: 'dashboard analytics',
       description: 'A comprehensive enterprise resource planning (ERP) system for logistics. Streamlines operations from inventory to delivery, boosting efficiency by 30%.',
