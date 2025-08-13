@@ -25,7 +25,7 @@ export const projects: Project[] = [
       category: 'Web Application + Mobile Application',
       imageUrl: '/projects/learnlabz.jpg',
       dataAiHint: 'dashboard analytics',
-      description: 'A comprehensive SaaS platform for tutors and educational institutions. Each of the 50 investment slots is valued at 100,000 LKR.',
+      description: 'Learn Labz is a cloud-based platform that empowers tutors with modern tools to manage classes, track student progress, and deliver better outcomes — all in one place.',
       expectedInvestment: 5000000,
       currentInvestment: 0,
       pitchDeckUrl: '/projects/learnlabz/Proposal.pdf',
