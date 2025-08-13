@@ -32,7 +32,7 @@ export const projects: Project[] = [
       websiteUrl: 'https://learnlabz.com',
       screenshots: [
         '/projects/learnlabz/dashboard.jpeg',
-        'https://placehold.co/1200x800.png',
+        '/projects/learnlabz/login.jpg',
         'https://placehold.co/1200x800.png',
       ],
       investmentSlots: Array(50).fill({ status: 'available' }),
