@@ -8,7 +8,6 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
-import {defineTool} from 'genkit/tool';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env.local' });
@@ -27,7 +26,7 @@ const GetGoogleReviewsOutputSchema = z.array(GoogleReviewSchema);
 export type GetGoogleReviewsOutput = z.infer<typeof GetGoogleReviewsOutputSchema>;
 
 
-const fetchGoogleReviewsTool = defineTool(
+const fetchGoogleReviewsTool = ai.defineTool(
   {
     name: 'fetchGoogleReviews',
     description: 'Fetches the latest reviews for a business from the Google Places API.',
