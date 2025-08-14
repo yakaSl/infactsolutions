@@ -3,12 +3,14 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { clientWorks } from '@/lib/client-works-data';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 export function PastWorksSection() {
+  const duplicatedWorks = [...clientWorks, ...clientWorks];
+
   return (
-    <section id="past-works" className="bg-card">
+    <section id="past-works" className="bg-card py-16 sm:py-20 md:py-24 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,37 +24,30 @@ export function PastWorksSection() {
             We take pride in the solutions we've delivered for our clients across various industries.
           </p>
         </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {clientWorks.map((work, index) => (
-            <motion.div
-              key={work.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
-            >
-              <Card className="h-full flex flex-col group overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-2 border-border/50 hover:border-primary">
-                <CardHeader className="p-0">
+      </div>
+      <div className="relative">
+        <div className="flex animate-logo-reel">
+          {duplicatedWorks.map((work, index) => (
+            <div key={index} className="flex-shrink-0 w-80 px-4">
+                <Card className="h-full flex flex-col group overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-2 border-border/50 hover:border-primary">
                   <div className="relative aspect-video">
                     <Image
                       src={work.imageUrl}
                       alt="Client Work"
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500 p-4"
                       data-ai-hint={work.dataAiHint}
                     />
                   </div>
-                </CardHeader>
-                <CardContent className="p-4 flex flex-col flex-grow">
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {work.tags.map(tag => (
-                      <Badge key={tag} variant="outline">{tag}</Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+                  <CardContent className="p-4 flex flex-col flex-grow">
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {work.tags.map(tag => (
+                        <Badge key={tag} variant="outline">{tag}</Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+            </div>
           ))}
         </div>
       </div>
