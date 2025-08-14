@@ -95,43 +95,5 @@ export const projects: Project[] = [
         'https://placehold.co/1200x800.png',
       ],
       investmentSlots: Array(50).fill({ status: 'available' })
-    },
-     {
-      id: 5,
-      title: 'AI Customer Service Chatbot',
-      category: 'Artificial Intelligence',
-      imageUrl: 'https://placehold.co/500x350.png',
-      dataAiHint: 'chatbot interface',
-      description: 'Developed an AI-powered customer service chatbot that handles over 60% of customer inquiries, reducing wait times and improving satisfaction.',
-      expectedInvestment: 250000,
-      currentInvestment: 100000,
-      pitchDeckUrl: '/pitch-deck-ai-chatbot.pdf',
-      screenshots: [
-        'https://placehold.co/1200x800.png',
-        'https://placehold.co/1200x800.png',
-      ],
-      investmentSlots: [
-        { status: 'booked' }, { status: 'booked' }, { status: 'available' }, { status: 'available' },
-        { status: 'available' }, { status: 'available' }, { status: 'available' }, { status: 'available' }
-      ]
-    },
-    {
-      id: 6,
-      title: 'SaaS Platform Redesign',
-      category: 'UI/UX Design',
-      imageUrl: 'https://placehold.co/500x350.png',
-      dataAiHint: 'brand identity',
-      description: 'A complete brand identity and website redesign for a SaaS company, leading to improved user experience and increased conversion rates.',
-      expectedInvestment: 150000,
-      currentInvestment: 150000,
-      pitchDeckUrl: '/pitch-deck-saas-redesign.pdf',
-      screenshots: [
-        'https://placehold.co/1200x800.png',
-        'https://placehold.co/1200x800.png',
-        'https://placehold.co/1200x800.png',
-      ],
-      investmentSlots: [
-        { status: 'booked' }, { status: 'booked' }, { status: 'booked' }, { status: 'booked' }
-      ]
     }
 ];
