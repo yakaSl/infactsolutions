@@ -43,7 +43,7 @@ export const projects: Project[] = [
       category: 'Web Application + Mobile Application',
       imageUrl: '/meraic.jpg',
       dataAiHint: 'property management',
-      description: 'A comprehensive property management system to streamline operations for real estate professionals, from tenant screening to maintenance requests.',
+      description: "Meraic is a cloud-native PropTech startup offering an all-in-one SaaS platform that unites property listings with complete management tools. By integrating marketing, tenant management, billing and mainte nance in one dashboard, Meraic eliminates the inefficiencies of frag mented tools (e.g. double data entry and disjoint spreadsheets) that currently plague landlords.",
       expectedInvestment: 5000000,
       currentInvestment: 0,
       pitchDeckUrl: '/pitch-deck-ecommerce.pdf',
@@ -52,7 +52,7 @@ export const projects: Project[] = [
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
       ],
-      investmentSlots: Array(12).fill({ status: 'available' })
+      investmentSlots: Array(50).fill({ status: 'available' })
     },
     {
       id: 3,
