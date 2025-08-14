@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { clientWorks } from '@/lib/client-works-data';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 export function PastWorksSection() {
@@ -37,7 +37,7 @@ export function PastWorksSection() {
                   <div className="relative aspect-video">
                     <Image
                       src={work.imageUrl}
-                      alt={work.title}
+                      alt="Client Work"
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       data-ai-hint={work.dataAiHint}
@@ -45,7 +45,6 @@ export function PastWorksSection() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-4 flex flex-col flex-grow">
-                  <CardTitle className="text-lg font-semibold mb-4 flex-grow">{work.title}</CardTitle>
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {work.tags.map(tag => (
                       <Badge key={tag} variant="outline">{tag}</Badge>
