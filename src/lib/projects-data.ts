@@ -44,19 +44,15 @@ export const projects: Project[] = [
       imageUrl: '/meraic.jpg',
       dataAiHint: 'property management',
       description: 'A comprehensive property management system to streamline operations for real estate professionals, from tenant screening to maintenance requests.',
-      expectedInvestment: 750000,
-      currentInvestment: 400000,
+      expectedInvestment: 5000000,
+      currentInvestment: 0,
       pitchDeckUrl: '/pitch-deck-ecommerce.pdf',
       screenshots: [
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
       ],
-      investmentSlots: [
-        { status: 'booked' }, { status: 'booked' }, { status: 'booked' }, { status: 'booked' },
-        { status: 'booked' }, { status: 'available' }, { status: 'available' }, { status: 'available' },
-        { status: 'available' }, { status: 'available' }, { status: 'available' }, { status: 'available' }
-      ]
+      investmentSlots: Array(12).fill({ status: 'available' })
     },
     {
       id: 3,
