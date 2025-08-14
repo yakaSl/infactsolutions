@@ -20,12 +20,12 @@ export const clientWorks: ClientWork[] = [
     },
     {
       id: 2,
-      title: 'AetherFlow Analytics',
-      category: 'Data Analytics',
-      description: 'Developed a real-time data analytics dashboard for a fintech startup, providing actionable insights into market trends and user behavior.',
-      imageUrl: 'https://placehold.co/500x350.png',
-      dataAiHint: 'analytics charts',
-      tags: ['Vue.js', 'Python', 'BigQuery', 'GCP'],
+      title: 'Rosemed - Weddings',
+      category: 'Wedding Photography',
+      description: 'Captured timeless moments for Rosemed Weddings, providing a stunning digital portfolio to showcase their beautiful photography work.',
+      imageUrl: '/pastwork/rosmed.jpg',
+      dataAiHint: 'wedding photography',
+      tags: ['Photography', 'Branding', 'Portfolio'],
     },
     {
       id: 3,
