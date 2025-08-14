@@ -81,23 +81,20 @@ export const projects: Project[] = [
     },
     {
       id: 4,
-      title: 'Project Beta - Cloud Migration',
-      category: 'Cloud & DevOps',
-      imageUrl: 'https://placehold.co/500x350.png',
-      dataAiHint: 'cloud infrastructure',
-      description: 'Complete cloud migration for a healthcare provider to a secure, scalable, and HIPAA-compliant AWS infrastructure, reducing operational costs.',
-      expectedInvestment: 400000,
-      currentInvestment: 150000,
-      pitchDeckUrl: '/pitch-deck-beta.pdf',
+      title: 'Travel Wish - Tourism Help App',
+      category: 'Mobile Application',
+      imageUrl: '/projects/travelwish/logo.jpg',
+      dataAiHint: 'tourism mobile app',
+      description: 'Travel Wish is a versatile mobile application that serves both service providers in the tourism industry and travelers. It empowers tourists to independently explore their destinations by offering detailed information about local attractions, recommended accommodations, dining options, transportation services, and upcoming events.',
+      expectedInvestment: 100000000,
+      currentInvestment: 0,
+      pitchDeckUrl: '/projects/travelwish/proposal.pdf',
       screenshots: [
-        'https://placehold.co/1200x800.png',
+        '/projects/travelwish/dashboard.jpg',
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
       ],
-      investmentSlots: [
-        { status: 'booked' }, { status: 'booked' }, { status: 'booked' }, { status: 'available' },
-        { status: 'available' }, { status: 'available' }, { status: 'available' }, { status: 'available' }
-      ]
+      investmentSlots: Array(50).fill({ status: 'available' })
     },
      {
       id: 5,
