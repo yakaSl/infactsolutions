@@ -38,11 +38,11 @@ export const clientWorks: ClientWork[] = [
     },
     {
       id: 4,
-      title: 'ConnectSphere Social',
-      category: 'Web Application',
-      description: 'A vibrant social networking platform designed to connect professionals within niche industries, fostering collaboration and knowledge sharing.',
-      imageUrl: 'https://placehold.co/500x350.png',
-      dataAiHint: 'social network',
-      tags: ['Next.js', 'GraphQL', 'MongoDB', 'Vercel'],
+      title: 'Asian Wave',
+      category: 'E-commerce Platform',
+      description: 'A comprehensive multivendor e-commerce platform connecting buyers and sellers across Asia, powered by a modern and scalable tech stack.',
+      imageUrl: '/pastwork/aws.jpg',
+      dataAiHint: 'ecommerce platform',
+      tags: ['Next.js', 'Node.js', 'GraphQL', 'MongoDB', 'React Native', 'AWS'],
     },
 ];
