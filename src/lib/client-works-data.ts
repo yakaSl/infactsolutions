@@ -29,12 +29,12 @@ export const clientWorks: ClientWork[] = [
     },
     {
       id: 3,
-      title: 'Nova Mobile Banking',
-      category: 'Mobile App',
-      description: 'A secure and intuitive mobile banking application for a regional bank, featuring biometric login and P2P payments.',
-      imageUrl: 'https://placehold.co/500x350.png',
-      dataAiHint: 'mobile banking',
-      tags: ['React Native', 'Firebase', 'iOS', 'Android'],
+      title: 'Turn Taxi',
+      category: 'Ride-hailing Platform',
+      description: 'A comprehensive platform connecting taxi drivers and passengers, providing seamless booking and management of rides.',
+      imageUrl: '/pastwork/taxi.jpg',
+      dataAiHint: 'taxi app',
+      tags: ['Mobile App', 'Geolocation', 'Real-time'],
     },
     {
       id: 4,
