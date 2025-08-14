@@ -62,15 +62,21 @@ export const projects: Project[] = [
       imageUrl: '/projects/momento/logo.jpg',
       dataAiHint: 'mobile app',
       description: 'A mobile application for capturing and cherishing moments.',
-      expectedInvestment: 2000000,
-      currentInvestment: 0,
+      expectedInvestment: 10000000,
+      currentInvestment: 3500000,
       pitchDeckUrl: '/pitch-deck-momento.pdf',
       screenshots: [
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
       ],
-      investmentSlots: Array(20).fill({ status: 'available' })
+      investmentSlots: [
+        { status: 'booked' }, { status: 'booked' }, { status: 'booked' }, { status: 'booked' },
+        { status: 'booked' }, { status: 'booked' }, { status: 'booked' }, { status: 'available' },
+        { status: 'available' }, { status: 'available' }, { status: 'available' }, { status: 'available' },
+        { status: 'available' }, { status: 'available' }, { status: 'available' }, { status: 'available' },
+        { status: 'available' }, { status: 'available' }, { status: 'available' }, { status: 'available' }
+      ]
     },
     {
       id: 4,
