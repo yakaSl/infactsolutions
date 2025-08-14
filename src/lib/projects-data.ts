@@ -57,23 +57,20 @@ export const projects: Project[] = [
     },
     {
       id: 3,
-      title: 'Fintech DataVis Dashboard',
-      category: 'Data Analytics',
-      imageUrl: 'https://placehold.co/500x350.png',
-      dataAiHint: 'data visualization',
-      description: 'Interactive data visualization dashboard for a financial services firm, enabling real-time monitoring of market trends and portfolio performance.',
-      expectedInvestment: 300000,
-      currentInvestment: 300000,
-      pitchDeckUrl: '/pitch-deck-dataviz.pdf',
+      title: 'Momento',
+      category: 'Mobile App',
+      imageUrl: '/projects/momento/logo.jpg',
+      dataAiHint: 'mobile app',
+      description: 'A mobile application for capturing and cherishing moments.',
+      expectedInvestment: 2000000,
+      currentInvestment: 0,
+      pitchDeckUrl: '/pitch-deck-momento.pdf',
       screenshots: [
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
       ],
-      investmentSlots: [
-        { status: 'booked' }, { status: 'booked' }, { status: 'booked' }, { status: 'booked' },
-        { status: 'booked' }, { status: 'booked' }
-      ]
+      investmentSlots: Array(20).fill({ status: 'available' })
     },
     {
       id: 4,
