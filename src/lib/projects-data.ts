@@ -57,7 +57,7 @@ export const projects: Project[] = [
     },
     {
       id: 3,
-      title: 'Momento',
+      title: 'Momento -Event Management',
       category: 'Mobile App',
       imageUrl: '/projects/momento/logo.jpg',
       dataAiHint: 'mobile app',
