@@ -41,7 +41,7 @@ export const projects: Project[] = [
       id: 2,
       title: 'Meraic - Property Management System',
       category: 'Web Application + Mobile Application',
-      imageUrl: '/meraic/logo.jpg',
+      imageUrl: '/meraic.jpg',
       dataAiHint: 'property management',
       description: 'A comprehensive property management system to streamline operations for real estate professionals, from tenant screening to maintenance requests.',
       expectedInvestment: 750000,
