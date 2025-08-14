@@ -46,10 +46,10 @@ export const projects: Project[] = [
       description: "Meraic is a cloud-native PropTech startup offering an all-in-one SaaS platform that unites property listings with complete management tools. By integrating marketing, tenant management, billing and mainte nance in one dashboard, Meraic eliminates the inefficiencies of frag mented tools (e.g. double data entry and disjoint spreadsheets) that currently plague landlords.",
       expectedInvestment: 5000000,
       currentInvestment: 0,
-      pitchDeckUrl: '/meraic/proposal.pdf',
+      pitchDeckUrl: '/projects/meraic/proposal.pdf',
       websiteUrl: 'https://meraic.com',
       screenshots: [
-        '/meraic/dashboard.jpg',
+        '/projects/meraic/dashboard.jpg',
         'https://placehold.co/1200x800.png',
         'https://placehold.co/1200x800.png',
       ],
