@@ -30,11 +30,11 @@ export const clientWorks: ClientWork[] = [
     {
       id: 3,
       title: 'Turn Taxi',
-      category: 'Ride-hailing Platform',
-      description: 'A comprehensive platform connecting taxi drivers and passengers, providing seamless booking and management of rides.',
+      category: 'Mobile Application',
+      description: 'A platform for both taxi drivers and passengers to find hires and vehicles, built with modern mobile technology.',
       imageUrl: '/pastwork/taxi.jpg',
       dataAiHint: 'taxi app',
-      tags: ['Mobile App', 'Geolocation', 'Real-time'],
+      tags: ['React Native', 'Firebase', 'Mobile App'],
     },
     {
       id: 4,
