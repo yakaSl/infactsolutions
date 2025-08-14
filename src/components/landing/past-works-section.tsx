@@ -19,7 +19,7 @@ export function PastWorksSection() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center space-y-4 mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Our Past Works</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Our Clients</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             We take pride in the solutions we've delivered for our clients across various industries.
           </p>
