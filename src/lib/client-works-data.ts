@@ -30,4 +30,10 @@ export const clientWorks: ClientWork[] = [
       dataAiHint: 'ecommerce platform',
       tags: ['Next.js', 'Node.js', 'GraphQL', 'MongoDB', 'React Native', 'AWS'],
     },
+    {
+      id: 5,
+      imageUrl: '/pastwork/orbit.jpg',
+      dataAiHint: 'mobile app',
+      tags: ['Flutter', 'Firebase'],
+    },
 ];
