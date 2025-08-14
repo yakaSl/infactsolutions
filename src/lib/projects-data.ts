@@ -41,7 +41,7 @@ export const projects: Project[] = [
       id: 2,
       title: 'Meraic - Property Management System',
       category: 'Web Application + Mobile Application',
-      imageUrl: '/meraic.jpg',
+      imageUrl: '/projects/meraic/logo.jpg',
       dataAiHint: 'property management',
       description: "Meraic is a cloud-native PropTech startup offering an all-in-one SaaS platform that unites property listings with complete management tools. By integrating marketing, tenant management, billing and mainte nance in one dashboard, Meraic eliminates the inefficiencies of frag mented tools (e.g. double data entry and disjoint spreadsheets) that currently plague landlords.",
       expectedInvestment: 5000000,
