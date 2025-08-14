@@ -43,7 +43,7 @@ export const projects: Project[] = [
       category: 'Web Application + Mobile Application',
       imageUrl: '/projects/meraic/logo.jpg',
       dataAiHint: 'property management',
-      description: "Meraic is a cloud-native PropTech startup offering an all-in-one SaaS platform that unites property listings with complete management tools",
+      description: "Meraic is a cloud-native PropTech startup offering an all-in-one SaaS platform that unites property listings with complete management tools.",
       expectedInvestment: 5000000,
       currentInvestment: 0,
       pitchDeckUrl: '/projects/meraic/proposal.pdf',
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     },
     {
       id: 3,
-      title: 'Momento -Event Management',
+      title: 'Momento - Event Management',
       category: 'Mobile App',
       imageUrl: '/projects/momento/logo.jpg',
       dataAiHint: 'mobile app',
@@ -65,6 +65,7 @@ export const projects: Project[] = [
       expectedInvestment: 10000000,
       currentInvestment: 3500000,
       pitchDeckUrl: '/projects/momento/proposal.pdf',
+      websiteUrl: 'https://momento.lk',
       screenshots: [
         '/projects/momento/dashboard.jpg',
         'https://placehold.co/1200x800.png',
