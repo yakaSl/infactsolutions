@@ -34,8 +34,7 @@ export function ProjectsSection() {
             <div
               key={project.id}
             >
-              <Link href={`/projects/${project.id}`} legacyBehavior>
-                <a className="block h-full">
+              <Link href={`/projects/${project.id}`} className="block h-full">
                   <Card className="h-full flex flex-col group overflow-hidden cursor-pointer shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-2 border-border/50 hover:border-primary">
                     <CardHeader className="p-0">
                       <div className="relative aspect-video">
@@ -64,7 +63,6 @@ export function ProjectsSection() {
                       </div>
                     </CardContent>
                   </Card>
-                </a>
               </Link>
             </div>
           ))}
