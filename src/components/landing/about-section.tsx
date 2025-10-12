@@ -18,7 +18,7 @@ export function AboutSection() {
                 Founded on the principles of innovation and integrity, INFACT SOLUTIONS is a collective of passionate technologists, creative designers, and strategic thinkers dedicated to solving complex challenges for a global clientele. We believe in the transformative power of technology to simplify processes, connect people, and create new opportunities worldwide.
               </p>
               <p className="text-lg text-muted-foreground">
-                Our mission is to be a trusted global IT outsourcing partner, delivering bespoke digital solutions that are not only technologically advanced but also deeply aligned with international business objectives. We strive for excellence in everything we do, from initial concept to final deployment and ongoing support.
+                Our mission is to be a trusted global IT outsourcing partner, delivering bespoke digital solutions that are not only technologically advanced but also deeply aligned with international business objectives. We strive for excellence in everything we do, from initial concept to final deployment and ongoing support. Our expertise spans across critical domains including enterprise networking, robust cybersecurity defenses, and scalable software development, ensuring your business is ready for the future.
               </p>
             </div>
             <div
