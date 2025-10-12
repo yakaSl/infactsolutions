@@ -14,12 +14,14 @@ export function AboutSection() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
                 Your Trusted Global <span className="text-primary">IT Partner</span>
               </h2>
-              <p className="text-lg text-muted-foreground">
-                Founded on the principles of innovation and integrity, INFACT SOLUTIONS is a collective of passionate technologists, creative designers, and strategic thinkers dedicated to solving complex challenges for a global clientele. We believe in the transformative power of technology to simplify processes, connect people, and create new opportunities worldwide.
-              </p>
-              <p className="text-lg text-muted-foreground">
-                Our mission is to be a trusted global IT outsourcing partner, delivering bespoke digital solutions that are not only technologically advanced but also deeply aligned with international business objectives. We strive for excellence in everything we do, from initial concept to final deployment and ongoing support. Our expertise spans across critical domains including enterprise networking, robust cybersecurity defenses, and scalable software development, ensuring your business is ready for the future.
-              </p>
+              <div className="space-y-4 text-lg text-muted-foreground">
+                <p>
+                  Founded on innovation and integrity, INFACT SOLUTIONS is a premier IT and cybersecurity firm headquartered in Colombo, Sri Lanka. We are a collective of passionate technologists, creative designers, and strategic thinkers dedicated to solving complex challenges for a global clientele. Our mission is to be your trusted global outsourcing partner, delivering bespoke digital solutions that are technologically advanced and strategically aligned with your business objectives.
+                </p>
+                <p>
+                  Our expertise spans critical domains including enterprise networking, robust cybersecurity defenses, and scalable software development. We empower businesses worldwide, from startups to large enterprises, to navigate the digital landscape with confidence. By leveraging cutting-edge technology and a client-centric approach, we build secure, scalable, and high-performance solutions that drive growth and create new opportunities.
+                </p>
+            </div>
             </div>
             <div
               className="relative h-96 w-full rounded-lg overflow-hidden shadow-2xl"
@@ -36,10 +38,16 @@ export function AboutSection() {
         </div>
       </section>
       <div 
-        className="h-[400px] w-full parallax" 
-        style={{ backgroundImage: "url('/parallaxbk.jpg')" }}
+        className="h-[400px] w-full relative"
         aria-label="Abstract background image of global network infrastructure representing worldwide IT solutions"
-      ></div>
+      >
+        <Image
+            src="/parallaxbk.jpg"
+            alt="Abstract global network infrastructure"
+            fill
+            className="object-cover parallax"
+          />
+      </div>
     </>
   );
 }
