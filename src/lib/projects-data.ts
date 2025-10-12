@@ -33,7 +33,7 @@ export const projects: Project[] = [
       screenshots: [
         '/projects/learnlabz/dashboard.jpeg',
         '/projects/learnlabz/login.jpg',
-        'https://placehold.co/1200x800.png',
+        '/projects/learnlabz/dashboard.jpeg',
       ],
       investmentSlots: Array(50).fill({ status: 'available' }),
     },
@@ -50,8 +50,8 @@ export const projects: Project[] = [
       websiteUrl: 'https://meraic.com',
       screenshots: [
         '/projects/meraic/dashboard.jpg',
-        'https://placehold.co/1200x800.png',
-        'https://placehold.co/1200x800.png',
+        '/projects/meraic/dashboard.jpg',
+        '/projects/meraic/dashboard.jpg',
       ],
       investmentSlots: Array(50).fill({ status: 'available' })
     },
@@ -68,8 +68,8 @@ export const projects: Project[] = [
       websiteUrl: 'https://momento.lk',
       screenshots: [
         '/projects/momento/dashboard.jpg',
-        'https://placehold.co/1200x800.png',
-        'https://placehold.co/1200x800.png',
+        '/projects/momento/dashboard.jpg',
+        '/projects/momento/dashboard.jpg',
       ],
       investmentSlots: [
         { status: 'booked' }, { status: 'booked' }, { status: 'booked' }, { status: 'booked' },
@@ -91,8 +91,8 @@ export const projects: Project[] = [
       pitchDeckUrl: '/projects/travelwish/proposal.pdf',
       screenshots: [
         '/projects/travelwish/dashboard.jpg',
-        'https://placehold.co/1200x800.png',
-        'https://placehold.co/1200x800.png',
+        '/projects/travelwish/dashboard.jpg',
+        '/projects/travelwish/dashboard.jpg',
       ],
       investmentSlots: Array(50).fill({ status: 'available' })
     }
