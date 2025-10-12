@@ -42,58 +42,5 @@ export const clientWorks: ClientWork[] = [
       dataAiHint: 'website logo',
       tags: ['React'],
     },
-    {
-      id: 7,
-      imageUrl: '/pastwork/shaz.jpg',
-      dataAiHint: 'company logo',
-      tags: ['Next.js', 'Node.js', 'MongoDB'],
-    },
-    {
-      id: 8,
-      imageUrl: '/pastwork/stec.jpg',
-      dataAiHint: 'company logo',
-      tags: ['Next.js', 'Node.js', 'MongoDB'],
-    },
-    {
-      id: 9,
-      imageUrl: '/pastwork/tuktuk.jpg',
-      dataAiHint: 'company logo',
-      tags: ['Next.js', 'Node.js', 'MongoDB'],
-    },
-    {
-      id: 10,
-      imageUrl: '/pastwork/cey.jpg',
-      dataAiHint: 'company logo',
-      tags: ['Next.js', 'Node.js', 'MongoDB'],
-    },
-    {
-      id: 11,
-      imageUrl: '/pastwork/paris.jpg',
-      dataAiHint: 'company logo',
-      tags: ['Next.js', 'Node.js', 'MongoDB'],
-    },
-    {
-      id: 12,
-      imageUrl: '/pastwork/zen.jpg',
-      dataAiHint: 'company logo',
-      tags: ['Next.js', 'Node.js', 'MongoDB'],
-    },
-    {
-      id: 13,
-      imageUrl: '/pastwork/10.jpg',
-      dataAiHint: 'company logo',
-      tags: ['Next.js', 'Node.js', 'MongoDB'],
-    },
-    {
-      id: 14,
-      imageUrl: '/pastwork/zerp.jpg',
-      dataAiHint: 'company logo',
-      tags: ['Next.js', 'Node.js', 'MongoDB'],
-    },
-    {
-      id: 15,
-      imageUrl: '/pastwork/ata.jpg',
-      dataAiHint: 'company logo',
-      tags: ['Next.js', 'Node.js', 'MongoDB'],
-    },
+    
 ];
