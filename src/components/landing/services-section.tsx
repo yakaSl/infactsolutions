@@ -77,7 +77,7 @@ export function ServicesSection() {
               </Card>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
