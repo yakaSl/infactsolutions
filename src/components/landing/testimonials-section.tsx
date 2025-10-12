@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { getGoogleReviews, type GoogleReview } from '@/ai/flows/google-reviews-flow';
-import { AnimatePresence, motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 
 const StarRating = ({ rating }: { rating: number }) => (
@@ -53,7 +52,7 @@ export function TestimonialsSection() {
     return (
       <section id="testimonials" className="bg-card">
         <div className="container mx-auto px-4 md:px-6 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">What Our Clients Say</h2>
+            <h3 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">What Our Clients Say</h3>
             <p className="text-lg text-muted-foreground mb-12">Loading authentic reviews...</p>
         </div>
       </section>
@@ -68,28 +67,18 @@ export function TestimonialsSection() {
 
   return (
     <section id="testimonials" className="bg-card">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
+      <div
         className="container mx-auto px-4 md:px-6"
       >
         <div className="text-center space-y-4 mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Trusted by Businesses Like Yours</h2>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Trusted by Businesses Like Yours</h3>
            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Real feedback from our valued clients on Google.
           </p>
         </div>
         <Card className="max-w-4xl mx-auto bg-background p-8 md:p-12 relative overflow-hidden shadow-2xl min-h-[350px] flex items-center justify-center">
           <CardContent className="p-0 text-center w-full">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
+              <div
                 className="flex flex-col items-center"
               >
                 <Avatar className="w-20 h-20 mb-4 border-4 border-primary/50">
@@ -106,11 +95,10 @@ export function TestimonialsSection() {
                 <blockquote className="text-lg md:text-xl font-medium italic text-center max-w-2xl mx-auto">
                   “{text}”
                 </blockquote>
-              </motion.div>
-            </AnimatePresence>
+              </div>
           </CardContent>
         </Card>
-      </motion.div>
+      </div>
     </section>
   );
 }

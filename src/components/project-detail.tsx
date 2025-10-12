@@ -8,7 +8,6 @@ import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Download, Rocket, CheckCircle, Circle, ExternalLink } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat('en-US', {
@@ -24,23 +23,16 @@ export function ProjectDetail({ project }: { project: Project }) {
 
   return (
     <div className="container mx-auto px-4 md:px-6 py-12 md:py-20">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div>
         <Badge variant="secondary" className="mb-2">{project.category}</Badge>
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-4">{project.title}</h1>
         <p className="text-lg text-muted-foreground max-w-3xl mb-8">{project.description}</p>
-      </motion.div>
+      </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Main Content */}
-        <motion.div 
+        <div 
             className="lg:col-span-2 space-y-8"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
         >
           {/* Prototype/Screenshots */}
           <Card className="overflow-hidden border-border/50 shadow-lg">
@@ -95,14 +87,11 @@ export function ProjectDetail({ project }: { project: Project }) {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
 
         {/* Sidebar */}
-        <motion.div 
+        <div 
             className="space-y-6"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
         >
           <Card className="sticky top-24 border-border/50 shadow-xl">
             <CardHeader>
@@ -145,7 +134,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Code, Smartphone, Cloud, BarChart, Bot, ShieldCheck } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 interface Service {
   icon: LucideIcon;
@@ -46,49 +45,24 @@ const services: Service[] = [
 ];
 
 export function ServicesSection() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-  };
 
   return (
     <section id="services" className="bg-card">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+        <div
           className="text-center space-y-4 mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">What We Do</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             We offer a comprehensive suite of services to build, deploy, and scale exceptional digital experiences.
           </p>
-        </motion.div>
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}
+        </div>
+        <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {services.map((service) => (
-            <motion.div
+            <div
               key={service.title}
-              variants={itemVariants}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
               className="h-full"
             >
               <Card className="bg-background border-border/50 hover:border-primary transition-colors duration-300 shadow-lg h-full flex flex-col">
@@ -101,7 +75,7 @@ export function ServicesSection() {
                   <Button variant="link" className="p-0 self-start">Learn More &rarr;</Button>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </motion.div>
       </div>

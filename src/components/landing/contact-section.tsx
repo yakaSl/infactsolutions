@@ -11,7 +11,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { submitContactForm } from '@/app/actions';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -47,24 +46,16 @@ export function ContactSection() {
   return (
     <section id="contact" className="bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+        <div
           className="text-center space-y-4 mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Let's Build Together</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Have a project in mind or just want to say hello? We'd love to hear from you.
           </p>
-        </motion.div>
+        </div>
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
+            <div
               className="h-full"
             >
               <Card className="w-full h-full bg-card border-border/50 shadow-xl flex flex-col">
@@ -114,12 +105,8 @@ export function ContactSection() {
                   </Form>
                 </CardContent>
               </Card>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+            </div>
+            <div
               className="relative min-h-[550px] w-full rounded-lg overflow-hidden hidden lg:block shadow-xl"
             >
               <Image 
@@ -129,7 +116,7 @@ export function ContactSection() {
                 className="object-cover"
               />
                <div className="absolute inset-0 bg-black/30" />
-            </motion.div>
+            </div>
         </div>
       </div>
     </section>

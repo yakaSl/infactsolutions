@@ -1,7 +1,6 @@
 "use client";
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { clientWorks } from '@/lib/client-works-data';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -12,18 +11,14 @@ export function PastWorksSection() {
   return (
     <section id="past-works" className="bg-card py-16 sm:py-20 md:py-24 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+        <div
           className="text-center space-y-4 mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Our Clients</h2>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Our Clients</h3>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             We take pride in the solutions we've delivered for our clients across various industries.
           </p>
-        </motion.div>
+        </div>
       </div>
       <div className="relative">
         <div className="flex animate-logo-reel">

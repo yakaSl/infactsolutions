@@ -11,10 +11,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://infactsolutions.net'),
   title: {
-    default: 'Infact Solutions — Global IT, Cybersecurity & Software Development Partner',
+    default: 'Global IT, Cybersecurity & Software Development Partner',
     template: '%s | INFACT SOLUTIONS',
   },
-  description: 'Empowering businesses worldwide with secure networking, cybersecurity, and custom web & mobile app development.',
+  description: 'Empowering businesses worldwide with secure networking, cybersecurity, and custom web & mobile app development. Your trusted global IT outsourcing partner.',
   openGraph: {
     title: 'Infact Solutions: Building Secure & Scalable Digital Solutions Globally',
     description: 'Empowering businesses worldwide with secure networking, cybersecurity, and custom web & mobile app development.',
@@ -50,6 +50,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://infactsolutions.net/',
+    languages: {
+      'en': 'https://infactsolutions.net/',
+      'x-default': 'https://infactsolutions.net/',
+    }
   }
 };
 

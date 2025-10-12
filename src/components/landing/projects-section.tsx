@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { projects } from '@/lib/projects-data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -21,27 +20,19 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+        <div
           className="text-center space-y-4 mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Projects</h2>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Projects</h3>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             A glimpse into the solutions we've crafted for our valued clients.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {projects.map((project, index) => (
-            <motion.div
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
             >
               <Link href={`/projects/${project.id}`} legacyBehavior>
                 <a className="block h-full">
@@ -75,7 +66,7 @@ export function ProjectsSection() {
                   </Card>
                 </a>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
