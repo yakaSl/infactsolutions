@@ -7,7 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 export function PastWorksSection() {
-  const duplicatedWorks = [...clientWorks, ...clientWorks];
+  const duplicatedWorks = [...clientWorks, ...clientWorks, ...clientWorks, ...clientWorks];
 
   return (
     <section id="past-works" className="bg-card py-16 sm:py-20 md:py-24 overflow-hidden">
@@ -33,7 +33,7 @@ export function PastWorksSection() {
                   <div className="relative aspect-video">
                     <Image
                       src={work.imageUrl}
-                      alt="Client Work"
+                      alt={`Logo for client project featuring technologies like ${work.tags.join(', ')}`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500 p-4"
                       data-ai-hint={work.dataAiHint}

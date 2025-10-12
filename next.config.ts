@@ -18,6 +18,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/sitemap',
+        permanent: true,
+      },
+      {
+        source: '/robots.txt',
+        destination: '/robots',
+        permanent: true,
+      }
+    ]
+  }
 };
 
 export default nextConfig;

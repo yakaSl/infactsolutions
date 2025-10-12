@@ -35,7 +35,7 @@ export function AboutSection() {
             >
               <Image 
                 src="/aboutinfact.jpg"
-                alt="INFACT SOLUTIONS team collaborating on a project in Colombo"
+                alt="INFACT SOLUTIONS team collaborating on an IT project in Colombo, Sri Lanka"
                 fill
                 className="object-cover"
                 data-ai-hint="team collaboration"
@@ -51,7 +51,7 @@ export function AboutSection() {
         transition={{ duration: 1 }}
         className="h-[400px] w-full parallax" 
         style={{ backgroundImage: "url('/parallaxbk.jpg')" }}
-        aria-label="Abstract background image of networking infrastructure"
+        aria-label="Abstract background image of network infrastructure representing IT solutions in Sri Lanka"
       ></motion.div>
     </>
   );
