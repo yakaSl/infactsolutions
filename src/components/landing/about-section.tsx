@@ -17,7 +17,7 @@ export function AboutSection() {
               className="space-y-6"
             >
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-                About <span className="text-primary">INFACT</span>
+                Your Trusted Tech Partner in <span className="text-primary">Sri Lanka</span>
               </h2>
               <p className="text-lg text-muted-foreground">
                 Founded on the principles of innovation and integrity, INFACT SOLUTIONS is a collective of passionate technologists, creative designers, and strategic thinkers dedicated to solving complex challenges. We believe in the transformative power of technology and its ability to simplify processes, connect people, and create new opportunities.
@@ -35,7 +35,7 @@ export function AboutSection() {
             >
               <Image 
                 src="/aboutinfact.jpg"
-                alt="Our team collaborating"
+                alt="INFACT SOLUTIONS team collaborating on a project in Colombo"
                 fill
                 className="object-cover"
                 data-ai-hint="team collaboration"
@@ -51,6 +51,7 @@ export function AboutSection() {
         transition={{ duration: 1 }}
         className="h-[400px] w-full parallax" 
         style={{ backgroundImage: "url('/parallaxbk.jpg')" }}
+        aria-label="Abstract background image of networking infrastructure"
       ></motion.div>
     </>
   );
