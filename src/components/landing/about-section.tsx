@@ -17,13 +17,13 @@ export function AboutSection() {
               className="space-y-6"
             >
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-                Your Trusted Tech Partner in <span className="text-primary">Sri Lanka</span>
+                Your Trusted Global <span className="text-primary">IT Partner</span>
               </h2>
               <p className="text-lg text-muted-foreground">
-                Founded on the principles of innovation and integrity, INFACT SOLUTIONS is a collective of passionate technologists, creative designers, and strategic thinkers dedicated to solving complex challenges. We believe in the transformative power of technology and its ability to simplify processes, connect people, and create new opportunities.
+                Founded on the principles of innovation and integrity, INFACT SOLUTIONS is a collective of passionate technologists, creative designers, and strategic thinkers dedicated to solving complex challenges for a global clientele. We believe in the transformative power of technology to simplify processes, connect people, and create new opportunities worldwide.
               </p>
               <p className="text-lg text-muted-foreground">
-                Our mission is to be a trusted partner for our clients, delivering bespoke digital solutions that are not only technologically advanced but also deeply aligned with their business objectives. We strive for excellence in everything we do, from initial concept to final deployment and beyond.
+                Our mission is to be a trusted global IT outsourcing partner, delivering bespoke digital solutions that are not only technologically advanced but also deeply aligned with international business objectives. We strive for excellence in everything we do, from initial concept to final deployment and ongoing support.
               </p>
             </motion.div>
             <motion.div
@@ -35,7 +35,7 @@ export function AboutSection() {
             >
               <Image 
                 src="/aboutinfact.jpg"
-                alt="INFACT SOLUTIONS team collaborating on an IT project in Colombo, Sri Lanka"
+                alt="Global IT outsourcing services team collaborating on a project - Infact Solutions"
                 fill
                 className="object-cover"
                 data-ai-hint="team collaboration"
@@ -51,7 +51,7 @@ export function AboutSection() {
         transition={{ duration: 1 }}
         className="h-[400px] w-full parallax" 
         style={{ backgroundImage: "url('/parallaxbk.jpg')" }}
-        aria-label="Abstract background image of network infrastructure representing IT solutions in Sri Lanka"
+        aria-label="Abstract background image of global network infrastructure representing worldwide IT solutions"
       ></motion.div>
     </>
   );

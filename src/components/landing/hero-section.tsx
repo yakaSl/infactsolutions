@@ -15,10 +15,10 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-black/60" />
             <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4">
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter animate-fade-in-down">
-                    Expert IT, Networking & Cybersecurity Solutions
+                    Global IT, Cybersecurity & Software Development Partner
                 </h1>
                 <p className="mt-4 max-w-2xl text-lg md:text-xl text-foreground/80 animate-fade-in-up">
-                    We engineer cutting-edge digital products and provide innovative services that empower businesses to thrive in a connected world.
+                    We engineer cutting-edge digital products and provide innovative IT outsourcing services that empower businesses to thrive in a connected world.
                 </p>
                 <Button size="lg" className="mt-8 text-lg" onClick={() => scrollToSection('contact')}>
                     Secure Your Consultation

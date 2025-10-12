@@ -11,13 +11,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://infactsolutions.net'),
   title: {
-    default: 'INFACT SOLUTIONS | IT, Networking, & Cybersecurity in Sri Lanka',
+    default: 'Infact Solutions — Global IT, Cybersecurity & Software Development Partner',
     template: '%s | INFACT SOLUTIONS',
   },
-  description: 'Leading provider of IT services, networking, cybersecurity, and custom software development in Colombo, Sri Lanka. Secure your business with our expert solutions.',
+  description: 'Empowering businesses worldwide with secure networking, cybersecurity, and custom web & mobile app development.',
   openGraph: {
-    title: 'INFACT SOLUTIONS | Premier IT & Cybersecurity in Sri Lanka',
-    description: 'Expert IT solutions, networking, and cybersecurity services in Sri Lanka to secure and scale your business.',
+    title: 'Infact Solutions: Building Secure & Scalable Digital Solutions Globally',
+    description: 'Empowering businesses worldwide with secure networking, cybersecurity, and custom web & mobile app development.',
     url: 'https://infactsolutions.net',
     siteName: 'INFACT SOLUTIONS',
     images: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'INFACT SOLUTIONS - IT Services and Cybersecurity',
+        alt: 'INFACT SOLUTIONS - Global IT and Cybersecurity Partner',
       },
     ],
     locale: 'en_US',
@@ -44,10 +44,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'INFACT SOLUTIONS | Premier IT & Cybersecurity in Sri Lanka',
-    description: 'Secure and scale your business with INFACT SOLUTIONS, Colombo’s trusted IT, networking, and software development partner.',
+    title: 'Infact Solutions — Global IT, Cybersecurity & Software Development Partner',
+    description: 'Empowering businesses worldwide with secure networking, cybersecurity, and custom web & mobile app development.',
     images: ['/og-image.png'],
   },
+  alternates: {
+    canonical: 'https://infactsolutions.net/',
+  }
 };
 
 export default function RootLayout({
@@ -57,6 +60,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} dark scroll-smooth`}>
+      <head>
+        <link rel="alternate" href="https://infactsolutions.net/" hrefLang="en" />
+        <link rel="alternate" href="https://infactsolutions.net/" hrefLang="x-default" />
+      </head>
       <body className="font-body antialiased selection:bg-primary/70 selection:text-primary-foreground">
         {children}
         <Toaster />

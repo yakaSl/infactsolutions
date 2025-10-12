@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteUrl}/projects/${project.id}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
-    priority: 0.8,
+    priority: 0.7,
   }));
 
   const staticPages = [
@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteUrl}/projects`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.9,
+      priority: 0.8,
     },
   ];
 
