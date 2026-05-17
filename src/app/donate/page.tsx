@@ -21,8 +21,9 @@ export default function DonatePage() {
                 Support Our Projects
               </h1>
               <p className="text-base md:text-lg text-muted-foreground">
-                Help us continue building innovative digital products. You can support a specific
-                project or contribute to our general development fund.
+                Help us continue building innovative digital products. Pay with a credit or debit
+                card, or with a PayPal account &mdash; whichever is easier. You can support a
+                specific project or our general development fund.
               </p>
             </div>
             <DonateForm />

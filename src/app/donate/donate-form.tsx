@@ -92,8 +92,8 @@ export function DonateForm() {
         <div>
           <CardTitle>Support Our Projects</CardTitle>
           <CardDescription>
-            Help us continue building innovative digital products. Donations are processed in USD
-            via PayPal.
+            Help us continue building innovative digital products. Pay securely with a credit or
+            debit card, or with a PayPal account. Donations are processed in USD.
           </CardDescription>
         </div>
         <Stepper steps={STEPS} current={step} />
@@ -269,10 +269,10 @@ export function DonateForm() {
               ) : (
                 <Button type="submit" disabled={form.formState.isSubmitting || redirecting}>
                   {redirecting
-                    ? 'Redirecting to PayPal...'
+                    ? 'Redirecting to checkout...'
                     : form.formState.isSubmitting
                       ? 'Starting payment...'
-                      : 'Continue to PayPal'}
+                      : 'Continue to payment'}
                 </Button>
               )}
             </div>
@@ -311,7 +311,8 @@ function DonationReview({ values }: { values: DonationFormValues }) {
         ))}
       </dl>
       <p className="text-xs text-muted-foreground">
-        Clicking Continue redirects you to PayPal to complete the payment securely.
+        Clicking Continue takes you to a secure PayPal checkout page where you can pay with a
+        credit or debit card (no PayPal account required) or sign in with PayPal.
       </p>
     </div>
   );
