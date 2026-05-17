@@ -19,18 +19,17 @@ import {
   donationSchema,
   type DonationFormValues,
 } from '@/lib/contribution-schemas';
-import { submitDonationIntent } from './actions';
+import { createDonationOrder } from './actions';
 
 import { Stepper } from '@/components/contribute/stepper';
 import { AmountPicker } from '@/components/contribute/amount-picker';
-import { CheckCircle2 } from 'lucide-react';
 
-const STEPS = ['Project', 'Amount', 'Donor', 'Submit'];
+const STEPS = ['Project', 'Amount', 'Donor', 'Pay'];
 
 export function DonateForm() {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
-  const [submittedRef, setSubmittedRef] = useState<string | null>(null);
+  const [redirecting, setRedirecting] = useState(false);
 
   const form = useForm<DonationFormValues>({
     resolver: zodResolver(donationSchema),
@@ -38,7 +37,7 @@ export function DonateForm() {
     defaultValues: {
       targetSlug: contributionTargets[0]?.slug ?? '',
       amount: undefined as unknown as number,
-      currency: 'LKR',
+      currency: 'USD',
       donorMode: 'named',
       donorName: '',
       donorEmail: '',
@@ -67,60 +66,24 @@ export function DonateForm() {
   }
 
   async function onSubmit(values: DonationFormValues) {
-    const result = await submitDonationIntent(values);
-    if (result.ok && result.referenceId) {
-      setSubmittedRef(result.referenceId);
-      toast({
-        title: 'Thank you!',
-        description: 'Your contribution intent was recorded. Reference ' + result.referenceId,
-      });
-      form.reset();
-    } else {
-      toast({
-        variant: 'destructive',
-        title: 'Could not submit',
-        description: result.message ?? 'Please review the form and try again.',
-      });
-      if (result.fieldErrors) {
-        for (const [name, errs] of Object.entries(result.fieldErrors)) {
-          if (errs?.[0]) {
-            form.setError(name as keyof DonationFormValues, { type: 'server', message: errs[0] });
-          }
+    const result = await createDonationOrder(values);
+    if (result.ok && result.approveUrl) {
+      setRedirecting(true);
+      window.location.href = result.approveUrl;
+      return;
+    }
+    toast({
+      variant: 'destructive',
+      title: 'Could not start payment',
+      description: result.message ?? 'Please review the form and try again.',
+    });
+    if (result.fieldErrors) {
+      for (const [name, errs] of Object.entries(result.fieldErrors)) {
+        if (errs?.[0]) {
+          form.setError(name as keyof DonationFormValues, { type: 'server', message: errs[0] });
         }
       }
     }
-  }
-
-  if (submittedRef) {
-    return (
-      <Card className="bg-card border-border/50 shadow-xl">
-        <CardHeader className="text-center">
-          <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <CheckCircle2 className="h-7 w-7" />
-          </div>
-          <CardTitle>Thank you for supporting Infact Solutions</CardTitle>
-          <CardDescription>
-            Your contribution intent was recorded. Reference: <span className="font-mono">{submittedRef}</span>
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4 text-sm text-muted-foreground">
-          <p>
-            Our team will follow up with the next step. PayPal payment capture will be wired in a
-            future update.
-          </p>
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => {
-              setSubmittedRef(null);
-              setStep(0);
-            }}
-          >
-            Make another contribution
-          </Button>
-        </CardContent>
-      </Card>
-    );
   }
 
   return (
@@ -129,8 +92,8 @@ export function DonateForm() {
         <div>
           <CardTitle>Support Our Projects</CardTitle>
           <CardDescription>
-            Help us continue building innovative digital products. Support a specific project or
-            contribute to our general development fund.
+            Help us continue building innovative digital products. Donations are processed in USD
+            via PayPal.
           </CardDescription>
         </div>
         <Stepper steps={STEPS} current={step} />
@@ -175,12 +138,14 @@ export function DonateForm() {
                 name="amount"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Select amount</FormLabel>
+                    <FormLabel>Select amount (USD)</FormLabel>
                     <FormControl>
                       <AmountPicker
                         presets={DONATION_PRESET_AMOUNTS}
                         value={field.value}
                         onChange={field.onChange}
+                        currencyLabel="USD"
+                        minCustom={1}
                       />
                     </FormControl>
                     <FormMessage />
@@ -204,9 +169,9 @@ export function DonateForm() {
                           className="space-y-2"
                         >
                           {[
-                            { v: 'anonymous', t: 'Donate anonymously', d: 'Your name will not be displayed publicly. Transaction details may still be stored privately for accounting and compliance.' },
+                            { v: 'anonymous', t: 'Donate anonymously', d: 'Your name will not be displayed publicly. PayPal transaction details are still stored privately for accounting and compliance.' },
                             { v: 'named', t: 'Donate with my name' },
-                            { v: 'detailed', t: 'Donate with donor details' },
+                            { v: 'detailed', t: 'Donate with donor details (we will email a receipt)' },
                           ].map((opt) => (
                             <label
                               key={opt.v}
@@ -261,7 +226,7 @@ export function DonateForm() {
                     name="donorEmail"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email (optional)</FormLabel>
+                        <FormLabel>Email for receipt</FormLabel>
                         <FormControl><Input type="email" placeholder="email@example.com" {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
@@ -294,7 +259,7 @@ export function DonateForm() {
             )}
 
             <div className="flex items-center justify-between pt-2">
-              <Button type="button" variant="outline" onClick={back} disabled={step === 0}>
+              <Button type="button" variant="outline" onClick={back} disabled={step === 0 || redirecting}>
                 Back
               </Button>
               {step < STEPS.length - 1 ? (
@@ -302,8 +267,12 @@ export function DonateForm() {
                   Continue
                 </Button>
               ) : (
-                <Button type="submit" disabled={form.formState.isSubmitting}>
-                  {form.formState.isSubmitting ? 'Submitting...' : 'Submit donation'}
+                <Button type="submit" disabled={form.formState.isSubmitting || redirecting}>
+                  {redirecting
+                    ? 'Redirecting to PayPal...'
+                    : form.formState.isSubmitting
+                      ? 'Starting payment...'
+                      : 'Continue to PayPal'}
                 </Button>
               )}
             </div>
@@ -318,7 +287,7 @@ function DonationReview({ values }: { values: DonationFormValues }) {
   const target = contributionTargets.find((t) => t.slug === values.targetSlug);
   const rows: Array<[string, string]> = [
     ['Project', target?.label ?? values.targetSlug],
-    ['Amount', `LKR ${(values.amount ?? 0).toLocaleString()}`],
+    ['Amount', `USD ${(values.amount ?? 0).toFixed(2)}`],
     ['Donor mode', values.donorMode],
   ];
   if (values.donorMode !== 'anonymous') {
@@ -332,7 +301,7 @@ function DonationReview({ values }: { values: DonationFormValues }) {
 
   return (
     <div className="space-y-3">
-      <h3 className="text-base font-semibold">Review and submit</h3>
+      <h3 className="text-base font-semibold">Review and continue</h3>
       <dl className="divide-y divide-border rounded-md border">
         {rows.map(([k, v]) => (
           <div key={k} className="grid grid-cols-3 gap-2 px-4 py-2 text-sm">
@@ -342,8 +311,7 @@ function DonationReview({ values }: { values: DonationFormValues }) {
         ))}
       </dl>
       <p className="text-xs text-muted-foreground">
-        Submitting records your contribution intent. PayPal payment capture will be added in a
-        future update.
+        Clicking Continue redirects you to PayPal to complete the payment securely.
       </p>
     </div>
   );
