@@ -4,3 +4,34 @@ firebase apphosting:secrets:set PAYPAL_WEBHOOK_ID         # leave blank for now,
 firebase apphosting:secrets:set RESEND_API_KEY
 firebase apphosting:secrets:set RESEND_FROM
 firebase apphosting:secrets:set FIREBASE_SERVICE_ACCOUNT_JSON
+
+
+$clientId = "AXP-Kkr9PiG-EYLhH10xukwBcnDPk6r8zUmLWmkbp_TrArHeOQBvd8OHKvuVK4Z8r5rKcWi1GjF8b1Es"
+$secret   = "ECRVg5VE2Km3PYUjLiSkMRane1iP-5B57CbH6k1YOnIurEKJ6XlWKYE3uzIHtxHFHcVt6Zr9byHKihIn"
+
+# 1. Get an access token
+$pair  = "${clientId}:${secret}"
+$basic = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes($pair))
+$tok   = Invoke-RestMethod -Method Post `
+  -Uri "https://api-m.sandbox.paypal.com/v1/oauth2/token" `
+  -Headers @{ Authorization = "Basic $basic" } `
+  -Body "grant_type=client_credentials"
+
+# 2. Create the webhook
+$body = @{
+  url = "https://infactsolutions.net/api/paypal/webhook"
+  event_types = @(
+    @{ name = "PAYMENT.CAPTURE.COMPLETED" }
+    @{ name = "PAYMENT.CAPTURE.DENIED" }
+    @{ name = "PAYMENT.CAPTURE.REFUNDED" }
+    @{ name = "PAYMENT.CAPTURE.REVERSED" }
+  )
+} | ConvertTo-Json -Depth 4
+
+$hook = Invoke-RestMethod -Method Post `
+  -Uri "https://api-m.sandbox.paypal.com/v1/notifications/webhooks" `
+  -Headers @{ Authorization = "Bearer $($tok.access_token)"; "Content-Type" = "application/json" } `
+  -Body $body
+
+$hook.id          # <- this is your PAYPAL_WEBHOOK_ID
+
