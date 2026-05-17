@@ -1,0 +1,6 @@
+c
+firebase apphosting:secrets:set PAYPAL_CLIENT_SECRET
+firebase apphosting:secrets:set PAYPAL_WEBHOOK_ID         # leave blank for now, set it after step 3
+firebase apphosting:secrets:set RESEND_API_KEY
+firebase apphosting:secrets:set RESEND_FROM
+firebase apphosting:secrets:set FIREBASE_SERVICE_ACCOUNT_JSON
