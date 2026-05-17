@@ -11,6 +11,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { submitContactForm } from '@/app/actions';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Heart, Briefcase, ArrowRight } from 'lucide-react';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -53,6 +55,48 @@ export function ContactSection() {
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Have a project in mind or just want to say hello? We'd love to hear from you.
           </p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <Link href="/donate" className="group">
+            <Card className="h-full bg-card border-border/50 shadow-lg transition-colors group-hover:border-primary/60">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <Heart className="h-5 w-5" />
+                  </span>
+                  <CardTitle>Support a Project</CardTitle>
+                </div>
+                <CardDescription>
+                  Contribute to selected Infact Solutions projects.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-primary">
+                  Donate <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/invest" className="group">
+            <Card className="h-full bg-card border-border/50 shadow-lg transition-colors group-hover:border-primary/60">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <Briefcase className="h-5 w-5" />
+                  </span>
+                  <CardTitle>Investor Interest</CardTitle>
+                </div>
+                <CardDescription>
+                  Explore private investment opportunities after review and discussion.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-primary">
+                  Join as Investor <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
             <div
