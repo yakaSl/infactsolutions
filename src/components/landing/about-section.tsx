@@ -19,7 +19,7 @@ export function AboutSection() {
                   Founded on innovation and integrity, INFACT SOLUTIONS is a premier IT and cybersecurity firm headquartered in Colombo, Sri Lanka. We are a collective of passionate technologists, creative designers, and strategic thinkers dedicated to solving complex challenges for a global clientele. Our mission is to be your trusted global outsourcing partner, delivering bespoke digital solutions that are technologically advanced and strategically aligned with your business objectives.
                 </p>
                 <p>
-                  Our expertise spans critical domains including enterprise networking, robust cybersecurity defenses, and scalable software development. We empower businesses worldwide, from startups to large enterprises, to navigate the digital landscape with confidence. By leveraging cutting-edge technology and a client-centric approach, we build secure, scalable, and high-performance solutions that drive growth and create new opportunities.
+                  Our expertise spans critical domains including enterprise networking, robust cybersecurity defenses, and scalable software development. But we go beyond designing screens or publishing websites: we build complete digital ecosystems where the website, mobile app, admin dashboard, cloud backend, payments, and business operations work together. Our strongest value is understanding the business model behind each project and turning it into a practical, scalable digital product — for clients across tourism, healthcare, real estate, gems, education, e-commerce, mobility, and SaaS.
                 </p>
             </div>
             </div>

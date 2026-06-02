@@ -101,6 +101,10 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
     application_context: {
       brand_name: 'Infact Solutions',
       user_action: 'PAY_NOW',
+      // BILLING = show the guest card-payment form first; PayPal login is secondary.
+      // LOGIN (default) = show login first, hides guest checkout for many buyers.
+      landing_page: 'BILLING',
+      shipping_preference: 'NO_SHIPPING',
       return_url: input.returnUrl,
       cancel_url: input.cancelUrl,
     },

@@ -54,7 +54,7 @@ export function ServicesSection() {
         >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">What We Do</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            We offer a comprehensive suite of services to build, deploy, and scale exceptional digital experiences. Our expert teams are dedicated to delivering excellence at every stage, from strategy to execution.
+            We build the system behind your business — websites, web applications, mobile apps, cloud backends, AI tools, and security. Our expert teams deliver at every stage: discovering your business model, then designing, building, securing, launching, and improving the product over the long term.
           </p>
         </div>
         <div

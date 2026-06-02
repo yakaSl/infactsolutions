@@ -27,7 +27,7 @@ export function HeroSection() {
                     Global IT, Cybersecurity & Software Development Partner
                 </h1>
                 <p className="mt-4 max-w-2xl text-base md:text-xl text-foreground/80">
-                    Empowering businesses worldwide with secure networking, cybersecurity, and custom web & mobile app development. Your trusted global IT outsourcing partner for scalable and secure digital solutions.
+                    Empowering businesses worldwide with secure networking, cybersecurity, and custom web & mobile development. We don't just design screens — we build the complete system behind your business: websites, apps, dashboards, cloud backends, and AI tools. Your trusted global IT outsourcing partner.
                 </p>
                 <Button size="lg" className="mt-8 text-lg" onClick={() => scrollToSection('contact')}>
                     Secure Your Consultation
