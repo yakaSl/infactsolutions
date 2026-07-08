@@ -60,20 +60,9 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  async redirects() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/sitemap',
-        permanent: true,
-      },
-      {
-        source: '/robots.txt',
-        destination: '/robots',
-        permanent: true,
-      }
-    ]
-  }
+  // NOTE: Do NOT add redirects from /sitemap.xml or /robots.txt. Next.js App
+  // Router serves those files natively from src/app/sitemap.ts and robots.ts at
+  // exactly those URLs; redirecting them sends crawlers to non-existent routes (404).
 };
 
 export default nextConfig;

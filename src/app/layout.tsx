@@ -58,6 +58,37 @@ export const metadata: Metadata = {
   }
 };
 
+// Organization + WebSite structured data (schema.org / JSON-LD). Rendered on
+// every page to power brand knowledge-panel and rich results. `sameAs` is left
+// out until real social profile URLs exist (the footer links are placeholders).
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://infactsolutions.net/#organization',
+      name: 'INFACT SOLUTIONS',
+      url: 'https://infactsolutions.net/',
+      logo: 'https://infactsolutions.net/logo.png',
+      description:
+        'Global IT outsourcing partner delivering secure networking, cybersecurity, and custom web & mobile app development.',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'hello@infactsolutions.net',
+        contactType: 'customer support',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://infactsolutions.net/#website',
+      url: 'https://infactsolutions.net/',
+      name: 'INFACT SOLUTIONS',
+      publisher: { '@id': 'https://infactsolutions.net/#organization' },
+      inLanguage: 'en',
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -68,6 +99,10 @@ export default function RootLayout({
       <head>
         <link rel="alternate" href="https://infactsolutions.net/" hrefLang="en" />
         <link rel="alternate" href="https://infactsolutions.net/" hrefLang="x-default" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </head>
       <body className="font-body antialiased selection:bg-primary/70 selection:text-primary-foreground">
         {children}
