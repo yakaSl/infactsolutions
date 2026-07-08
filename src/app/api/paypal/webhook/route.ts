@@ -10,6 +10,7 @@ import {
   markContributionStatus,
   recordWebhookEventIfNew,
 } from '@/lib/server/storage';
+import { sendDonationPaidEmails } from '@/lib/server/donation-notify';
 
 export const runtime = 'nodejs';
 
@@ -114,6 +115,14 @@ async function dispatch(event: WebhookEvent): Promise<void> {
       if (contribution.status !== 'paid') {
         const captureId = (event.resource?.id as string | undefined) ?? '';
         await markContributionPaid(contribution.id, captureId, event.resource);
+        // Backstop notification: only runs when the webhook is what transitioned
+        // the donation to paid (e.g. the buyer never returned to the capture page),
+        // so the normal return-page flow does not double-send.
+        await sendDonationPaidEmails({
+          ...contribution,
+          status: 'paid',
+          paypalCaptureId: captureId,
+        }).catch((e) => console.error('[paypal-webhook] failed to send paid emails', e));
       }
       return;
     }

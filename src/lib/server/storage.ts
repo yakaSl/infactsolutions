@@ -1,7 +1,7 @@
 import { randomUUID } from 'crypto';
 import type { DonationFormValues, InvestorLeadFormValues } from '@/lib/contribution-schemas';
 import { getFirestoreDb } from './firebase';
-import { FieldValue, Timestamp } from 'firebase-admin/firestore';
+import { FieldValue, Timestamp, type Firestore } from 'firebase-admin/firestore';
 
 export type ContributionStatus =
   | 'pending'
@@ -55,6 +55,19 @@ const memContributions = new Map<string, SavedContribution>();
 const memInvestorLeads = new Map<string, SavedInvestorLead>();
 const memWebhookEvents = new Map<string, WebhookEventRecord>();
 
+// The in-memory fallback is only acceptable in local dev. In production a missing
+// Firestore means submissions would be silently lost (and not shared across Cloud
+// Run instances), so persistence-creating calls must fail closed instead.
+class PersistenceUnavailableError extends Error {}
+
+function requireDbInProduction(db: Firestore | null): void {
+  if (!db && process.env.NODE_ENV === 'production') {
+    throw new PersistenceUnavailableError(
+      'Firestore is not configured; refusing to accept submissions in production.'
+    );
+  }
+}
+
 function toIso(value: unknown): string {
   if (value instanceof Timestamp) return value.toDate().toISOString();
   if (value instanceof Date) return value.toISOString();
@@ -100,6 +113,7 @@ export async function createPendingContribution(data: DonationFormValues): Promi
   };
 
   const db = getFirestoreDb();
+  requireDbInProduction(db);
   if (db) {
     await db.collection(CONTRIBUTIONS).doc(id).set({
       type: 'donation',
@@ -214,6 +228,7 @@ export async function saveInvestorLead(data: InvestorLeadFormValues): Promise<Sa
   };
 
   const db = getFirestoreDb();
+  requireDbInProduction(db);
   if (db) {
     await db.collection(INVESTOR_LEADS).doc(id).set({
       status: 'new',

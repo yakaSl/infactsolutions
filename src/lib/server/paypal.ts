@@ -133,7 +133,42 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
 export interface CaptureResult {
   status: string;
   captureId?: string;
+  /** Captured amount as a two-decimal string, e.g. "25.00". */
+  amountValue?: string;
+  /** Captured currency, e.g. "USD". */
+  currencyCode?: string;
   raw: unknown;
+}
+
+// Both the capture response and a GET /orders/{id} response share the same
+// purchase_units[].payments.captures[] shape, so we extract from either.
+function extractCaptureDetails(data: Record<string, unknown>): Omit<CaptureResult, 'raw'> {
+  const purchaseUnits = (data.purchase_units as Array<Record<string, unknown>> | undefined) ?? [];
+  const payments = purchaseUnits[0]?.payments as Record<string, unknown> | undefined;
+  const captures = payments?.captures as Array<Record<string, unknown>> | undefined;
+  const capture = captures?.[0];
+  const amount = capture?.amount as { value?: string; currency_code?: string } | undefined;
+  const status =
+    (data.status as string | undefined) ??
+    (capture?.status as string | undefined) ??
+    'UNKNOWN';
+  return {
+    status,
+    captureId: capture?.id as string | undefined,
+    amountValue: amount?.value,
+    currencyCode: amount?.currency_code,
+  };
+}
+
+/** Fetch an order's current state (used to recover details of an already-captured order). */
+export async function getOrder(orderId: string): Promise<CaptureResult> {
+  const res = await authedFetch(`/v2/checkout/orders/${orderId}`, { method: 'GET' });
+  const text = await res.text();
+  if (!res.ok) {
+    throw new PaypalApiError(`PayPal getOrder failed: ${res.status}`, res.status, text);
+  }
+  const data = JSON.parse(text) as Record<string, unknown>;
+  return { ...extractCaptureDetails(data), raw: data };
 }
 
 export async function captureOrder(orderId: string): Promise<CaptureResult> {
@@ -143,18 +178,17 @@ export async function captureOrder(orderId: string): Promise<CaptureResult> {
     idempotencyKey: `capture-${orderId}`,
   });
   const text = await res.text();
-  // PayPal returns 422 with ORDER_ALREADY_CAPTURED if capture is repeated; treat as success.
-  if (!res.ok && res.status !== 422) {
+  if (!res.ok) {
+    // If the order was already captured (retry, double submit, or concurrent
+    // return-page + webhook), recover the real capture state instead of failing.
+    // Otherwise the caller would wrongly mark a paid donation as failed.
+    if (res.status === 422 && text.includes('ORDER_ALREADY_CAPTURED')) {
+      return getOrder(orderId);
+    }
     throw new PaypalApiError(`PayPal captureOrder failed: ${res.status}`, res.status, text);
   }
   const data = JSON.parse(text) as Record<string, unknown>;
-  const purchaseUnits = (data.purchase_units as Array<Record<string, unknown>> | undefined) ?? [];
-  const captures = (purchaseUnits[0]?.payments as Record<string, unknown> | undefined)?.captures as
-    | Array<Record<string, unknown>>
-    | undefined;
-  const captureId = captures?.[0]?.id as string | undefined;
-  const status = (data.status as string | undefined) ?? captures?.[0]?.status as string | undefined ?? 'UNKNOWN';
-  return { status, captureId, raw: data };
+  return { ...extractCaptureDetails(data), raw: data };
 }
 
 export interface WebhookVerificationInput {

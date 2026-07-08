@@ -1,0 +1,14 @@
+rules_version = '2';
+
+// This app reaches Firestore exclusively through the Firebase Admin SDK
+// (server-side), which bypasses these rules. No client uses the Firestore
+// web SDK, so all direct client access is denied as defense-in-depth. This
+// protects donor/investor PII (contributions, investorLeads) from any future
+// accidental client exposure.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

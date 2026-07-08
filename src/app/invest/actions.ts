@@ -1,9 +1,18 @@
 'use server';
 
+import { headers } from 'next/headers';
 import { investorLeadSchema, type InvestorLeadFormValues } from '@/lib/contribution-schemas';
 import { findContributionTarget } from '@/lib/contribution-targets';
 import { saveInvestorLead } from '@/lib/server/storage';
 import { sendEmail, adminNotificationAddress } from '@/lib/server/email';
+import { rateLimit } from '@/lib/server/rate-limit';
+
+async function clientIp(): Promise<string> {
+  const h = await headers();
+  const fwd = h.get('x-forwarded-for');
+  if (fwd) return fwd.split(',')[0].trim();
+  return h.get('x-real-ip') ?? 'unknown';
+}
 
 export interface InvestorActionResult {
   ok: boolean;
@@ -13,6 +22,14 @@ export interface InvestorActionResult {
 }
 
 export async function submitInvestorInterest(input: InvestorLeadFormValues): Promise<InvestorActionResult> {
+  const rl = rateLimit(`invest:${await clientIp()}`, 5, 60_000);
+  if (!rl.allowed) {
+    return {
+      ok: false,
+      message: `Too many attempts. Please wait ${rl.retryAfterSeconds ?? 60}s and try again.`,
+    };
+  }
+
   const parsed = investorLeadSchema.safeParse(input);
   if (!parsed.success) {
     return {
