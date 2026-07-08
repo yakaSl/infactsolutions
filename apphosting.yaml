@@ -1,36 +1,61 @@
-# Settings to manage and configure a Firebase App Hosting backend.
-# https://firebase.google.com/docs/app-hosting/configure
-
+# Settings for Backend (on Cloud Run).
+# See https://firebase.google.com/docs/app-hosting/configure#cloud-run
 runConfig:
-  # Increase this value if you'd like to automatically spin up
-  # more instances in response to increased traffic.
-  maxInstances: 1
+  minInstances: 0
+  # maxInstances: 100
+  # concurrency: 80
+  # cpu: 1
+  # memoryMiB: 512
 
+# Environment variables and secrets.
+# See https://firebase.google.com/docs/app-hosting/configure#user-defined-environment
+#
+# Everything below is read server-side only (server actions, the webhook route,
+# email + Firestore helpers), so RUNTIME availability is sufficient.
+#
+# Secret values live in Cloud Secret Manager, created with:
+#   firebase apphosting:secrets:set <NAME>
+# The `secret:` field is the Secret Manager secret name (kept identical to the
+# variable name here). Never put secret values in this file — it is committed to git.
 env:
-  # Public — visible in client bundles, fine to commit.
-  - variable: NEXT_PUBLIC_BASE_URL
-    value: https://infactsolutions.net
-    availability: [BUILD, RUNTIME]
-
-  # Non-secret runtime config.
+  # --- Non-sensitive config (safe as plain values) ---
+  # PayPal base URL controls sandbox vs. live.
+  # Sandbox: https://api-m.sandbox.paypal.com  |  Live: https://api-m.paypal.com
   - variable: PAYPAL_BASE_URL
     value: https://api-m.sandbox.paypal.com
-    availability: [RUNTIME]
+    availability:
+      - RUNTIME
   - variable: ADMIN_NOTIFICATION_EMAIL
     value: hello@infactsolutions.net
-    availability: [RUNTIME]
+    availability:
+      - RUNTIME
+  - variable: RESEND_FROM
+    value: Infact Solutions <noreply@infactsolutions.net>
+    availability:
+      - RUNTIME
+  - variable: NEXT_PUBLIC_BASE_URL
+    value: https://infactsolutions.net
+    availability:
+      - RUNTIME
 
-  # Secrets — value lives in Secret Manager, referenced by name.
-  # Create each with: firebase apphosting:secrets:set <NAME>
+  # --- Secrets (Cloud Secret Manager) ---
   - variable: PAYPAL_CLIENT_ID
     secret: PAYPAL_CLIENT_ID
+    availability:
+      - RUNTIME
   - variable: PAYPAL_CLIENT_SECRET
     secret: PAYPAL_CLIENT_SECRET
+    availability:
+      - RUNTIME
   - variable: PAYPAL_WEBHOOK_ID
     secret: PAYPAL_WEBHOOK_ID
+    availability:
+      - RUNTIME
   - variable: RESEND_API_KEY
     secret: RESEND_API_KEY
-  - variable: RESEND_FROM
-    secret: RESEND_FROM
+    availability:
+      - RUNTIME
   - variable: FIREBASE_SERVICE_ACCOUNT_JSON
     secret: FIREBASE_SERVICE_ACCOUNT_JSON
+    availability:
+      - RUNTIME
