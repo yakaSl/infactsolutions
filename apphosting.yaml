@@ -26,7 +26,7 @@ env:
     availability:
       - RUNTIME
   - variable: ADMIN_NOTIFICATION_EMAIL
-    value: hello@infactsolutions.net
+    value: m4nuj4y4@gmail.com
     availability:
       - RUNTIME
   - variable: RESEND_FROM
