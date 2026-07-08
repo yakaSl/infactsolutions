@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { projects } from '@/lib/projects-data';
+import { blogPosts } from '@/lib/blog-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = 'https://infactsolutions.net';
@@ -11,6 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
+  }));
+
+  const blogPages = blogPosts.map(post => ({
+    url: `${siteUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.dateModified),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
   }));
 
   const staticPages = [
@@ -32,7 +40,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
+    {
+      url: `${siteUrl}/blog`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
   ];
 
-  return [...staticPages, ...projectPages];
+  return [...staticPages, ...projectPages, ...blogPages];
 }

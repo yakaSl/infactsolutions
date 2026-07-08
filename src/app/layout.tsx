@@ -59,8 +59,8 @@ export const metadata: Metadata = {
 };
 
 // Organization + WebSite structured data (schema.org / JSON-LD). Rendered on
-// every page to power brand knowledge-panel and rich results. `sameAs` is left
-// out until real social profile URLs exist (the footer links are placeholders).
+// every page to power brand knowledge-panel and rich results. `sameAs` lists the
+// official social profiles so Google can connect them to the organization entity.
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -77,6 +77,12 @@ const structuredData = {
         email: 'hello@infactsolutions.net',
         contactType: 'customer support',
       },
+      sameAs: [
+        'https://lk.linkedin.com/company/infact-solutions-pvt-ltd',
+        'https://www.facebook.com/infactsolutions/',
+        'https://www.instagram.com/infactsolutions/',
+        'https://www.tiktok.com/@infact.solutions',
+      ],
     },
     {
       '@type': 'WebSite',
