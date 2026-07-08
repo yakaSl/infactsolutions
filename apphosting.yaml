@@ -38,48 +38,49 @@ env:
     availability:
       - RUNTIME
 
-  # --- Firebase Web / Analytics (client-side, public) ---
+  # --- Firebase Web / Analytics (client-side) ---
   # NEXT_PUBLIC_ vars are inlined into the client bundle at BUILD time, so these
   # MUST include BUILD availability (RUNTIME alone is not enough for the browser).
-  # These are public Web-app identifiers, not secrets, so plain `value:` is fine.
-  # Fill in the real values from Firebase console (Project settings -> Your apps
-  # -> Web app -> SDK setup) and uncomment. Analytics only starts once
-  # NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID is present.
-  # - variable: NEXT_PUBLIC_FIREBASE_API_KEY
-  #   value: your_web_api_key
-  #   availability:
-  #     - BUILD
-  #     - RUNTIME
-  # - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-  #   value: your-project.firebaseapp.com
-  #   availability:
-  #     - BUILD
-  #     - RUNTIME
-  # - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
-  #   value: your-project
-  #   availability:
-  #     - BUILD
-  #     - RUNTIME
-  # - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-  #   value: your-project.appspot.com
-  #   availability:
-  #     - BUILD
-  #     - RUNTIME
-  # - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-  #   value: "000000000000"
-  #   availability:
-  #     - BUILD
-  #     - RUNTIME
-  # - variable: NEXT_PUBLIC_FIREBASE_APP_ID
-  #   value: 1:000000000000:web:abcdef123456
-  #   availability:
-  #     - BUILD
-  #     - RUNTIME
-  # - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-  #   value: G-XXXXXXXXXX
-  #   availability:
-  #     - BUILD
-  #     - RUNTIME
+  # Stored in Cloud Secret Manager (secret names kept identical to the variable
+  # names) to keep the raw values out of this committed file. Note: because these
+  # are NEXT_PUBLIC_, the resolved values still ship in the client JS bundle.
+  # Create/update each with:  firebase apphosting:secrets:set <NAME>
+  # Analytics only starts once NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID is present.
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    secret: NEXT_PUBLIC_FIREBASE_API_KEY
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    secret: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    secret: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    secret: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    secret: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    secret: NEXT_PUBLIC_FIREBASE_APP_ID
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    secret: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    availability:
+      - BUILD
+      - RUNTIME
 
   # --- Secrets (Cloud Secret Manager) ---
   - variable: PAYPAL_CLIENT_ID
