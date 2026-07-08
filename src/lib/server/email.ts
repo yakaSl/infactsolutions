@@ -4,6 +4,8 @@ export interface OutgoingEmail {
   to: string;
   subject: string;
   text: string;
+  /** Optional HTML body. When set, `text` is sent as the plain-text fallback. */
+  html?: string;
   replyTo?: string;
 }
 
@@ -63,6 +65,7 @@ export async function sendEmail(email: OutgoingEmail): Promise<{ ok: boolean; id
       to: email.to,
       subject: email.subject,
       text: email.text,
+      ...(email.html ? { html: email.html } : {}),
       replyTo: email.replyTo,
     });
     if (result.error) {
