@@ -35,6 +35,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   /* config options here */
+  // Don't advertise the framework in responses (removes `X-Powered-By: Next.js`).
+  poweredByHeader: false,
   typescript: {
     ignoreBuildErrors: true,
   },

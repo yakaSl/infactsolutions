@@ -12,10 +12,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://infactsolutions.net'),
   title: {
-    default: 'INFACT SOLUTIONS: Global IT, Cybersecurity & Software Partner',
+    default: 'INFACT SOLUTIONS: IT, Cybersecurity & Software Partner',
     template: '%s | INFACT SOLUTIONS',
   },
-  description: 'Empowering businesses worldwide with secure networking, cybersecurity, and custom web & mobile app development. Your trusted global IT outsourcing partner for scalable and secure digital solutions.',
+  description: 'Global IT partner for secure networking, cybersecurity, and custom web & mobile app development. Scalable, secure digital solutions for businesses worldwide.',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: 'Infact Solutions: Building Secure & Scalable Digital Solutions Globally',
     description: 'Empowering businesses worldwide with secure networking, cybersecurity, and custom web & mobile app development.',
@@ -103,8 +107,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} dark scroll-smooth`}>
       <head>
-        <link rel="alternate" href="https://infactsolutions.net/" hrefLang="en" />
-        <link rel="alternate" href="https://infactsolutions.net/" hrefLang="x-default" />
+        {/* hreflang links are emitted by metadata.alternates.languages — do not
+            duplicate them here, or audits flag "language specified more than once". */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
