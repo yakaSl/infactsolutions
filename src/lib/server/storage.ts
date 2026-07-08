@@ -1,5 +1,6 @@
 import { randomUUID } from 'crypto';
 import type { DonationFormValues, InvestorLeadFormValues } from '@/lib/contribution-schemas';
+import type { ContactFormValues } from '@/lib/contact-schema';
 import { getFirestoreDb } from './firebase';
 import { FieldValue, Timestamp, type Firestore } from 'firebase-admin/firestore';
 
@@ -38,6 +39,15 @@ export interface SavedInvestorLead {
   data: InvestorLeadFormValues;
 }
 
+export type ContactMessageStatus = 'new' | 'read' | 'archived';
+
+export interface SavedContactMessage {
+  id: string;
+  status: ContactMessageStatus;
+  createdAt: string;
+  data: ContactFormValues;
+}
+
 export interface WebhookEventRecord {
   eventId: string;
   eventType: string;
@@ -48,11 +58,13 @@ export interface WebhookEventRecord {
 
 const CONTRIBUTIONS = 'contributions';
 const INVESTOR_LEADS = 'investorLeads';
+const CONTACT_MESSAGES = 'contactMessages';
 const WEBHOOK_EVENTS = 'paypalWebhookEvents';
 
 // --- in-memory fallback (used when Firestore is not configured) ---
 const memContributions = new Map<string, SavedContribution>();
 const memInvestorLeads = new Map<string, SavedInvestorLead>();
+const memContactMessages = new Map<string, SavedContactMessage>();
 const memWebhookEvents = new Map<string, WebhookEventRecord>();
 
 // The in-memory fallback is only acceptable in local dev. In production a missing
@@ -240,6 +252,34 @@ export async function saveInvestorLead(data: InvestorLeadFormValues): Promise<Sa
   }
 
   console.log('[storage] saved investor lead', { id, target: data.targetSlug, amount: data.amount });
+  return record;
+}
+
+// --- contact messages ---
+
+export async function saveContactMessage(data: ContactFormValues): Promise<SavedContactMessage> {
+  const id = randomUUID();
+  const nowIso = new Date().toISOString();
+  const record: SavedContactMessage = {
+    id,
+    status: 'new',
+    createdAt: nowIso,
+    data,
+  };
+
+  const db = getFirestoreDb();
+  requireDbInProduction(db);
+  if (db) {
+    await db.collection(CONTACT_MESSAGES).doc(id).set({
+      status: 'new',
+      data,
+      createdAt: FieldValue.serverTimestamp(),
+    });
+  } else {
+    memContactMessages.set(id, record);
+  }
+
+  console.log('[storage] saved contact message', { id, subject: data.subject });
   return record;
 }
 
