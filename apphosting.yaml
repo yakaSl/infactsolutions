@@ -22,7 +22,7 @@ env:
   # PayPal base URL controls sandbox vs. live.
   # Sandbox: https://api-m.sandbox.paypal.com  |  Live: https://api-m.paypal.com
   - variable: PAYPAL_BASE_URL
-    value: https://api-m.sandbox.paypal.com
+    value: https://api-m.paypal.com
     availability:
       - RUNTIME
   - variable: ADMIN_NOTIFICATION_EMAIL
