@@ -3,10 +3,12 @@ import { projects } from '@/lib/projects-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = 'https://infactsolutions.net';
+  // Stable build timestamp so lastModified doesn't churn on every request.
+  const lastModified = new Date();
 
   const projectPages = projects.map(project => ({
     url: `${siteUrl}/projects/${project.id}`,
-    lastModified: new Date(),
+    lastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
@@ -14,13 +16,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     {
       url: `${siteUrl}/`,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: 'weekly' as const,
       priority: 1.0,
     },
     {
       url: `${siteUrl}/projects`,
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/portfolio`,
+      lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
